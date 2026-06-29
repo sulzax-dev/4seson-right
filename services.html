@@ -5,272 +5,234 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services | 4 Seasons Right Services Inc</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#FFF5F2',
+                            100: '#FFEAE4',
+                            200: '#FFD5CB',
+                            300: '#FFA996',
+                            400: '#FF7659',
+                            500: '#FD441B',
+                            600: '#E03009',
+                            700: '#BA2203',
+                            800: '#9B1F07',
+                            900: '#7F200C'
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(253, 68, 27, 0.4)' },
+                            '50%': { boxShadow: '0 0 30px rgba(253, 68, 27, 0.8)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .accent-gradient { background: linear-gradient(135deg, #FD431A 0%, #FD431A 100%); }
-        .hero-overlay { background: rgba(15, 23, 42, 0.7); }
-        .service-card:hover .service-img { transform: scale(1.05); }
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
+        .accent-gradient { background: linear-gradient(135deg, #FD441B 0%, #FF6B4A 100%); }
+        .hero-overlay { background: linear-gradient(to bottom, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)); }
+        .service-card { transition: all 0.4s ease; }
+        .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -10px rgba(253, 68, 27, 0.15); }
+        .service-card:hover .service-img { transform: scale(1.08); }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
 
     <!-- Top Announcement Bar -->
-    <div class="bg-slate-900 text-white py-2 px-4 text-sm hidden md:block">
+    <div class="bg-slate-900 text-white py-2.5 px-4 text-sm hidden md:block border-b border-slate-800">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex space-x-6">
-                <span><i class="fas fa-phone-alt text-amber-500 mr-2"></i>(425) 466-5469</span>
-                <span><i class="fas fa-envelope text-amber-500 mr-2"></i>4srsinc@gmail.com</span>
+                <a href="tel:4254665469" class="hover:text-brand-400 transition flex items-center gap-2"><i class="fas fa-phone-alt text-brand-500"></i>(425) 466-5469</a>
+                <a href="mailto:4srsinc@gmail.com" class="hover:text-brand-400 transition flex items-center gap-2"><i class="fas fa-envelope text-brand-500"></i>4srsinc@gmail.com</a>
             </div>
-            <div>
-                <span><i class="fas fa-clock text-amber-500 mr-2"></i>Mon - Sat: 8am – 7pm</span>
+            <div class="flex items-center space-x-6">
+                <span><i class="fas fa-clock text-brand-500 mr-2"></i>Mon - Sat: 8am – 7pm</span>
+                <span class="bg-brand-500/20 text-brand-400 px-2.5 py-0.5 rounded-full text-xs font-semibold border border-brand-500/30">WA Lic# 4SEASSR801OR</span>
             </div>
         </div>
     </div>
 
     <!-- Navigation -->
-    <header class="glass-nav sticky top-0 z-50 border-b border-slate-200">
+    <header class="glass-nav sticky top-0 z-50 border-b border-slate-200 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-20 w-auto object-contain rounded">
-               
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-16 w-auto object-contain rounded transition-transform group-hover:scale-105">
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-tighter text-slate-900 leading-none">4 SEASONS <span class="text-brand-500">RIGHT</span></span>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Services Inc.</span>
+                </div>
             </a>
             
             <!-- Desktop Menu -->
-            <ul class="hidden lg:flex space-x-8 font-medium text-slate-600">
-                <li><a href="index.html" class="hover:text-amber-600 transition">Home</a></li>
-                <li><a href="about.html" class="hover:text-amber-600 transition">About Us</a></li>
-                <li><a href="services.html" class="text-amber-600 transition font-bold">Our Services</a></li>
-                <li><a href="contact.html" class="hover:text-amber-600 transition">Contact Us</a></li>
+            <ul class="hidden lg:flex space-x-8 font-semibold text-slate-600">
+                <li><a href="index.html" class="hover:text-brand-500 transition-colors py-1">Home</a></li>
+                <li><a href="about.html" class="hover:text-brand-500 transition-colors py-1">About Us</a></li>
+                <li><a href="services.html" class="text-brand-500 font-bold relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-brand-500">Our Services</a></li>
+                <li><a href="contact.html" class="hover:text-brand-500 transition-colors py-1">Contact Us</a></li>
             </ul>
 
             <div class="hidden lg:block">
-                <a href="contact.html" class="accent-gradient text-white px-6 py-2.5 rounded-md font-semibold hover:shadow-lg transition-all inline-block transform hover:-translate-y-0.5">
-                    BOOK NOW
+                <a href="contact.html" class="accent-gradient text-white px-7 py-3 rounded-xl font-bold hover:shadow-lg hover:shadow-brand-500/30 transition-all inline-block transform hover:-translate-y-0.5 animate-pulse-glow">
+                    BOOK ESTIMATE
                 </a>
             </div>
 
             <!-- Mobile Burger -->
-            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-slate-900">
+            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-slate-900 focus:outline-none" aria-label="Toggle Navigation">
                 <i class="fas fa-bars"></i>
             </button>
         </nav>
 
         <!-- Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 p-6 absolute w-full shadow-xl">
-            <ul class="space-y-4 font-medium">
-                <li><a href="index.html" class="block py-2">Home</a></li>
-                <li><a href="about.html" class="block py-2">About Us</a></li>
-                <li><a href="services.html" class="block py-2 text-amber-600">Our Services</a></li>
-                <li><a href="contact.html" class="block py-2">Contact Us</a></li>
-                <li><a href="contact.html" class="block w-full accent-gradient text-white text-center py-3 rounded-md">BOOK ESTIMATE</a></li>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 p-6 absolute w-full shadow-2xl">
+            <ul class="space-y-4 font-semibold">
+                <li><a href="index.html" class="block py-2 text-slate-700 hover:text-brand-500">Home</a></li>
+                <li><a href="about.html" class="block py-2 text-slate-700 hover:text-brand-500">About Us</a></li>
+                <li><a href="services.html" class="block py-2 text-brand-500 font-bold">Our Services</a></li>
+                <li><a href="contact.html" class="block py-2 text-slate-700 hover:text-brand-500">Contact Us</a></li>
+                <li><a href="contact.html" class="block w-full accent-gradient text-white text-center py-3.5 rounded-xl font-bold">BOOK ESTIMATE NOW</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative py-32 bg-slate-900 flex items-center overflow-hidden">
+    <section class="relative py-32 bg-slate-950 flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1504307651254-35680f356f12?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover" alt="Construction services">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356f12?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-40" alt="Construction services">
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">Our <span class="text-amber-500">Services</span></h1>
-            <p class="text-xl text-slate-300 max-w-2xl mx-auto">Comprehensive solutions for residential and commercial transformation. Built to last.</p>
+        <div class="container mx-auto px-6 relative z-10 text-center" data-aos="fade-up">
+            <span class="bg-brand-500/20 text-brand-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-brand-500/30 inline-block mb-4">Complete Contracting Solutions</span>
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6">Our <span class="text-brand-500">Services</span></h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto font-medium leading-relaxed">Comprehensive solutions for residential and commercial property transformation. Built to last.</p>
         </div>
     </section>
 
-    <!-- Services Grid -->
+    <!-- Interactive Filter & Services Grid -->
     <section class="py-24 bg-slate-50">
         <div class="container mx-auto px-6">
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Interactive Category Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-16" data-aos="fade-up">
+                <button class="filter-btn active bg-brand-500 text-white px-6 py-2.5 rounded-full font-bold text-sm transition shadow-md" data-filter="all">All Services</button>
+                <button class="filter-btn bg-white text-slate-700 hover:bg-slate-100 px-6 py-2.5 rounded-full font-semibold text-sm transition border border-slate-200" data-filter="remodel">Remodeling & Interior</button>
+                <button class="filter-btn bg-white text-slate-700 hover:bg-slate-100 px-6 py-2.5 rounded-full font-semibold text-sm transition border border-slate-200" data-filter="exterior">Roofing & Exterior</button>
+                <button class="filter-btn bg-white text-slate-700 hover:bg-slate-100 px-6 py-2.5 rounded-full font-semibold text-sm transition border border-slate-200" data-filter="structural">Framing & Flooring</button>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" id="services-container">
                 
                 <!-- Service 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 service-card border border-slate-100 group flex flex-col">
+                <div class="service-item remodel bg-white rounded-3xl overflow-hidden shadow-sm service-card border border-slate-200/70 flex flex-col" data-aos="fade-up" data-aos-delay="100">
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800" class="w-full h-full object-cover service-img transition-transform duration-500" alt="Kitchen & Bath Remodeling">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                         <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Kitchen & Bath</h3>
                     </div>
                     <div class="p-8 flex-grow flex flex-col">
                         <p class="text-slate-600 mb-6 leading-relaxed flex-grow">
-                            Cramped storage or poor lighting leaves your cooking area and bath feeling more like a burden than a comfort. We provide kitchen and bath renovation services to redesign interiors with smart planning, standard materials, and aesthetic upgrades. Whether you are seeking better utility or a style refresh, our team delivers spaces that are practical and beautiful, crafted for modern living and lasting enjoyment. We offer a thorough transformation customized to your lifestyle.
+                            We provide full kitchen and bath renovation services to redesign interiors with smart space planning, custom cabinetry, standard materials, and luxury aesthetic upgrades.
                         </p>
-                        <a href="contact.html" class="text-amber-600 font-bold tracking-wider text-sm uppercase group-hover:text-amber-700 transition flex items-center">
-                            READ MORE <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
+                        <a href="contact.html" class="text-brand-500 font-bold tracking-wider text-sm uppercase hover:text-brand-600 transition flex items-center gap-2 group">
+                            Book Service <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Service 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 service-card border border-slate-100 group flex flex-col">
+                <div class="service-item exterior bg-white rounded-3xl overflow-hidden shadow-sm service-card border border-slate-200/70 flex flex-col" data-aos="fade-up" data-aos-delay="150">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800" class="w-full h-full object-cover service-img transition-transform duration-500" alt="Drywall & Painting Services">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Drywall & Painting</h3>
+                        <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=800" class="w-full h-full object-cover service-img transition-transform duration-500" alt="Roofing Contracting">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Roofing Contracting</h3>
                     </div>
                     <div class="p-8 flex-grow flex flex-col">
                         <p class="text-slate-600 mb-6 leading-relaxed flex-grow">
-                            Walls with patchy textures or painted in dull, outdated shades can drag down the overall vibe of your place. Our framing and drywall services bring smooth finishes and bold color back to life, both inside and out. We handle everything from fixing holes to refreshing surfaces with vibrant hues, guaranteeing lasting outcomes. Our experts refresh your space with craftsmanship that stands out and features that truly impress.
+                            Our roofers repair leaks, fix structural damage, and install weatherproof shingles or metal roofing systems built for long-term protection against severe elements.
                         </p>
-                        <a href="contact.html" class="text-amber-600 font-bold tracking-wider text-sm uppercase group-hover:text-amber-700 transition flex items-center">
-                            READ MORE <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
+                        <a href="contact.html" class="text-brand-500 font-bold tracking-wider text-sm uppercase hover:text-brand-600 transition flex items-center gap-2 group">
+                            Book Service <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Service 3 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 service-card border border-slate-100 group flex flex-col">
+                <div class="service-item structural bg-white rounded-3xl overflow-hidden shadow-sm service-card border border-slate-200/70 flex flex-col" data-aos="fade-up" data-aos-delay="200">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800" class="w-full h-full object-cover service-img transition-transform duration-500" alt="Flooring & Carpentry">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Flooring & Carpentry</h3>
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800" class="w-full h-full object-cover service-img transition-transform duration-500" alt="Flooring Contracting">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Flooring Contracting</h3>
                     </div>
                     <div class="p-8 flex-grow flex flex-col">
                         <p class="text-slate-600 mb-6 leading-relaxed flex-grow">
-                            The foundation of any great space starts with quality flooring and expert carpentry. Our skilled craftsmen specialize in floor polishing and restoration services and make custom woodwork that elevates any room. From rich hardwood bases to bespoke cabinetry and elegant trim, we focus on accuracy and design. Every project is personalized to your vision, ensuring your site reflects both beauty and usability, built to last and improve your lifestyle.
+                            Expert floor laying services offering hardwood, luxury vinyl plank (LVP), and porcelain tile installations for durable, beautiful walking surfaces.
                         </p>
-                        <a href="contact.html" class="text-amber-600 font-bold tracking-wider text-sm uppercase group-hover:text-amber-700 transition flex items-center">
-                            READ MORE <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
+                        <a href="contact.html" class="text-brand-500 font-bold tracking-wider text-sm uppercase hover:text-brand-600 transition flex items-center gap-2 group">
+                            Book Service <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Service 4 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 service-card border border-slate-100 group flex flex-col">
+                <div class="service-item remodel bg-white rounded-3xl overflow-hidden shadow-sm service-card border border-slate-200/70 flex flex-col" data-aos="fade-up" data-aos-delay="250">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800" class="w-full h-full object-cover service-img transition-transform duration-500" alt="Deck & Siding Installation">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Deck & Siding</h3>
+                        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800" class="w-full h-full object-cover service-img transition-transform duration-500" alt="Painting Contracting">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Painting Contracting</h3>
                     </div>
                     <div class="p-8 flex-grow flex flex-col">
                         <p class="text-slate-600 mb-6 leading-relaxed flex-grow">
-                            Enhance your place’s exterior with the best deck and siding installation services. From elegant outdoor decks to protective, high quality siding, we provide customized resolutions that highlight style and durability. Whether you want a cozy deck for entertaining or sleek siding to boost visual appearance, our team delivers exceptional craftsmanship. Using advanced materials, we guarantee each project adds lasting beauty and value to your area, crafted to withstand the elements.
+                            Interior and exterior house painting services with thorough surface prep, premium weather-resistant coats, and clean edge lines.
                         </p>
-                        <a href="contact.html" class="text-amber-600 font-bold tracking-wider text-sm uppercase group-hover:text-amber-700 transition flex items-center">
-                            READ MORE <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
+                        <a href="contact.html" class="text-brand-500 font-bold tracking-wider text-sm uppercase hover:text-brand-600 transition flex items-center gap-2 group">
+                            Book Service <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Service 5 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 service-card border border-slate-100 group flex flex-col">
+                <div class="service-item structural bg-white rounded-3xl overflow-hidden shadow-sm service-card border border-slate-200/70 flex flex-col" data-aos="fade-up" data-aos-delay="300">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMALT6cHHgxW8Sn6qPF8zQT2HRI1fD_mmbHP1_BiN1oA&s=10" class="w-full h-full object-cover service-img transition-transform duration-500" alt="Roofing Services">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Roofing Services</h3>
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800" class="w-full h-full object-cover service-img transition-transform duration-500" alt="Framing Contracting">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Framing Contracting</h3>
                     </div>
                     <div class="p-8 flex-grow flex flex-col">
                         <p class="text-slate-600 mb-6 leading-relaxed flex-grow">
-                            A worn-out roof does not just age your place, it risks everything beneath it. Our roofing repair & installation services bring back strength, style, and security to every structure. We manage restoration and replacements with proficiency, tackling storm damage or years of wear with expertise. Using the finest materials and proven methods, our team makes sure of lasting protection. We shield your building with a top built to endure all seasons.
+                            Heavy-duty timber and steel structural framing services ensuring laser-accurate skeletons for new builds, additions, and walls.
                         </p>
-                        <a href="contact.html" class="text-amber-600 font-bold tracking-wider text-sm uppercase group-hover:text-amber-700 transition flex items-center">
-                            READ MORE <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
+                        <a href="contact.html" class="text-brand-500 font-bold tracking-wider text-sm uppercase hover:text-brand-600 transition flex items-center gap-2 group">
+                            Book Service <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Service 6 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 service-card border border-slate-100 group flex flex-col">
+                <div class="service-item exterior bg-white rounded-3xl overflow-hidden shadow-sm service-card border border-slate-200/70 flex flex-col" data-aos="fade-up" data-aos-delay="350">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800" class="w-full h-full object-cover service-img transition-transform duration-500" alt="Pressure Washing">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Pressure Washing</h3>
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800" class="w-full h-full object-cover service-img transition-transform duration-500" alt="Siding & Gutters">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Siding & Gutters</h3>
                     </div>
                     <div class="p-8 flex-grow flex flex-col">
                         <p class="text-slate-600 mb-6 leading-relaxed flex-grow">
-                            Dirt and grime do not stand a chance against powerful pressure washing. Our affordable pressure washing company is not just about blasting away dirt, it is about revealing the bold, fresh look hiding underneath. We target years of buildup with meticulous attention to detail and high-performance tools, restoring everything from driveways to siding. Our cleaning services ensure every part of your property shows its best side, commanding attention.
+                            Protective fiber cement siding and custom seamless gutters to shield your exterior walls and foundations from water intrusion.
                         </p>
-                        <a href="contact.html" class="text-amber-600 font-bold tracking-wider text-sm uppercase group-hover:text-amber-700 transition flex items-center">
-                            READ MORE <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Service 7 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 service-card border border-slate-100 group flex flex-col">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyiQrYr6YDsqpLYC125KNjfWTKrh19cywSayQ7uhLtAg&s=10" class="w-full h-full object-cover service-img transition-transform duration-500" alt="New Construction">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">New Construction</h3>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <p class="text-slate-600 mb-6 leading-relaxed flex-grow">
-                            Building dreams from the ground up starts with expert craftsmanship. We take pride in turning raw plans into real, enduring structures. Our new construction service in Washington focuses on forming customized zones that are efficient and sustainable, from foundations to rooftops. Every project receives the attention it deserves, making sure we meet your expectations while delivering outstanding impacts. We build places that support everyday life and future growth.
-                        </p>
-                        <a href="contact.html" class="text-amber-600 font-bold tracking-wider text-sm uppercase group-hover:text-amber-700 transition flex items-center">
-                            READ MORE <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Service 8 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 service-card border border-slate-100 group flex flex-col">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=800" class="w-full h-full object-cover service-img transition-transform duration-500" alt="Commercial Painting">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Commercial Painting</h3>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <p class="text-slate-600 mb-6 leading-relaxed flex-grow">
-                            Ready to make your retail area stand out with a fresh coat of paint? Our reliable painting service in Washington revitalizes your place, giving it a professional, polished look. We use the finest quality paints and procedures, guaranteeing lasting, vibrant results. Whether it is for an office, corporate site, or big commercial building, our team delivers brilliant craftsmanship, converting your space into a place that impresses clients and employees alike.
-                        </p>
-                        <a href="contact.html" class="text-amber-600 font-bold tracking-wider text-sm uppercase group-hover:text-amber-700 transition flex items-center">
-                            READ MORE <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Service 9 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 service-card border border-slate-100 group flex flex-col">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800" class="w-full h-full object-cover service-img transition-transform duration-500" alt="General Remodeling">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">General Remodeling</h3>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <p class="text-slate-600 mb-6 leading-relaxed flex-grow">
-                            Unlock the full potential of your space. Our interior and exterior remodeling services are not just about renovation, they are about forming environments that enhance your daily life. Our concentrate is on innovative design and superior craftsmanship, from modern kitchen updates to complete property overhaul. We turn underutilized or outdated spaces into functional, outstanding areas that reflect your personality and requirements, providing a perfect balance of aesthetics and performance.
-                        </p>
-                        <a href="contact.html" class="text-amber-600 font-bold tracking-wider text-sm uppercase group-hover:text-amber-700 transition flex items-center">
-                            READ MORE <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Service 10 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 service-card border border-slate-100 group flex flex-col">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=800" class="w-full h-full object-cover service-img transition-transform duration-500" alt="Painting Interior">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Painting Interior</h3>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <p class="text-slate-600 mb-6 leading-relaxed flex-grow">
-                            Transform your home with our expert interior painting services. We bring color, style, and fresh energy to every room. Our team uses high-quality paints for a flawless, long-lasting finish. From walls and ceilings to trims and doors, we do it all. We offer color consultation to help you choose the perfect shade. Clean, efficient, and respectful of your space.
-                        </p>
-                        <a href="contact.html" class="text-amber-600 font-bold tracking-wider text-sm uppercase group-hover:text-amber-700 transition flex items-center">
-                            READ MORE <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Service 11 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 service-card border border-slate-100 group flex flex-col">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1595844730298-b960ff86df16?auto=format&fit=crop&w=800" class="w-full h-full object-cover service-img transition-transform duration-500" alt="Painting Exterior">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Painting Exterior</h3>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <p class="text-slate-600 mb-6 leading-relaxed flex-grow">
-                            Enhance your property’s curb appeal with our high-quality exterior painting services. We specialize in transforming home and building exteriors with durability and style. Our team uses weather-resistant paints and proven techniques for long-lasting protection. We paint siding, stucco, brick, wood, trim, doors, shutters, fences, and more. Comprehensive surface preparation ensures a clean, smooth base for optimal adhesion.
-                        </p>
-                        <a href="contact.html" class="text-amber-600 font-bold tracking-wider text-sm uppercase group-hover:text-amber-700 transition flex items-center">
-                            READ MORE <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
+                        <a href="contact.html" class="text-brand-500 font-bold tracking-wider text-sm uppercase hover:text-brand-600 transition flex items-center gap-2 group">
+                            Book Service <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
@@ -280,46 +242,77 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 text-white pt-20 pb-10">
+    <footer class="bg-slate-950 text-white pt-20 pb-10 border-t border-slate-800">
         <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12 mb-16">
             <div class="col-span-2">
                 <div class="flex items-center gap-4 mb-6">
                     <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-16 w-auto object-contain rounded bg-white/10 p-1">
                     <div class="flex flex-col">
-                        <span class="text-2xl font-bold tracking-tighter">4 SEASONS <span class="text-amber-500">RIGHT</span></span>
-                        <span class="text-xs uppercase tracking-[0.3em] text-slate-500">Services Inc.</span>
+                        <span class="text-2xl font-extrabold tracking-tighter">4 SEASONS <span class="text-brand-500">RIGHT</span></span>
+                        <span class="text-xs uppercase tracking-[0.3em] text-slate-400 font-bold">Services Inc.</span>
                     </div>
                 </div>
-                <p class="text-slate-400 max-w-sm">
-                    A Washington licensed and bonded contractor providing premium renovations for commercial and residential clients. Built on efficiency and trust.
+                <p class="text-slate-400 max-w-sm leading-relaxed">
+                    A Washington licensed and bonded contractor providing premium renovations for commercial and residential clients. Built on efficiency, craftsmanship, and trust.
                 </p>
             </div>
             <div>
-                <h5 class="font-bold mb-6">Quick Links</h5>
-                <ul class="space-y-3 text-slate-400">
-                    <li><a href="index.html" class="hover:text-amber-500">Home</a></li>
-                    <li><a href="about.html" class="hover:text-amber-500">About Us</a></li>
-                    <li><a href="services.html" class="hover:text-amber-500">Services</a></li>
-                    <li><a href="contact.html" class="hover:text-amber-500">Contact Us</a></li>
+                <h5 class="font-bold text-lg mb-6 text-white border-l-4 border-brand-500 pl-3">Quick Links</h5>
+                <ul class="space-y-3 text-slate-400 font-medium">
+                    <li><a href="index.html" class="hover:text-brand-500 transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-brand-500 transition-colors">About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brand-500 transition-colors">Services</a></li>
+                    <li><a href="contact.html" class="hover:text-brand-500 transition-colors">Contact Us</a></li>
                 </ul>
             </div>
             <div>
-                <h5 class="font-bold mb-6">Contact</h5>
-                <p class="text-slate-400 mb-2"><i class="fas fa-phone-alt mr-2 text-amber-500"></i>(425) 466-5469</p>
-                <p class="text-slate-400"><i class="fas fa-envelope mr-2 text-amber-500"></i>4srsinc@gmail.com</p>
-                <p class="text-slate-400 mt-4 italic">Lic# 4SEASSR801OR</p>
+                <h5 class="font-bold text-lg mb-6 text-white border-l-4 border-brand-500 pl-3">Contact Us</h5>
+                <p class="text-slate-400 mb-3"><a href="tel:4254665469" class="hover:text-brand-400 transition flex items-center"><i class="fas fa-phone-alt mr-3 text-brand-500"></i>(425) 466-5469</a></p>
+                <p class="text-slate-400 mb-3"><a href="mailto:4srsinc@gmail.com" class="hover:text-brand-400 transition flex items-center"><i class="fas fa-envelope mr-3 text-brand-500"></i>4srsinc@gmail.com</a></p>
+                <p class="text-slate-400 mt-4 italic text-sm">Lic# 4SEASSR801OR</p>
             </div>
         </div>
-        <div class="container mx-auto px-6 pt-10 border-t border-white/5 text-center text-slate-500 text-sm">
+        <div class="container mx-auto px-6 pt-10 border-t border-white/10 text-center text-slate-500 text-sm font-medium">
             &copy; 2026 4 Seasons Right Services Inc | Powered by Nova Tech Studio LLC.
         </div>
     </footer>
 
+    <!-- Floating Quick Call / Action Widget -->
+    <a href="tel:4254665469" class="fixed bottom-6 right-6 z-50 bg-brand-500 hover:bg-brand-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl animate-pulse-glow transition transform hover:scale-110" title="Call Now">
+        <i class="fas fa-phone-alt text-xl"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        AOS.init({ duration: 800, once: true });
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileBtn?.addEventListener('click', () => {
             mobileMenu?.classList.toggle('hidden');
+        });
+
+        // Filter Functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const serviceItems = document.querySelectorAll('.service-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-brand-500', 'text-white', 'shadow-md');
+                    b.classList.add('bg-white', 'text-slate-700');
+                });
+                btn.classList.remove('bg-white', 'text-slate-700');
+                btn.classList.add('bg-brand-500', 'text-white', 'shadow-md');
+
+                const filter = btn.getAttribute('data-filter');
+                serviceItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
         });
     </script>
 </body>

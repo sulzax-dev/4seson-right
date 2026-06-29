@@ -5,82 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | 4 Seasons Right Services Inc</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#FFF5F2',
+                            100: '#FFEAE4',
+                            200: '#FFD5CB',
+                            300: '#FFA996',
+                            400: '#FF7659',
+                            500: '#FD441B',
+                            600: '#E03009',
+                            700: '#BA2203',
+                            800: '#9B1F07',
+                            900: '#7F200C'
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(253, 68, 27, 0.4)' },
+                            '50%': { boxShadow: '0 0 30px rgba(253, 68, 27, 0.8)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .accent-gradient { background: linear-gradient(135deg, #FD431A 0%, #FD431A 100%); }
-        .hero-overlay { background: rgba(15, 23, 42, 0.7); }
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
+        .accent-gradient { background: linear-gradient(135deg, #FD441B 0%, #FF6B4A 100%); }
+        .hero-overlay { background: linear-gradient(to bottom, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)); }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
 
     <!-- Top Announcement Bar -->
-    <div class="bg-slate-900 text-white py-2 px-4 text-sm hidden md:block">
+    <div class="bg-slate-900 text-white py-2.5 px-4 text-sm hidden md:block border-b border-slate-800">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex space-x-6">
-                <span><i class="fas fa-phone-alt text-amber-500 mr-2"></i>(425) 466-5469</span>
-                <span><i class="fas fa-envelope text-amber-500 mr-2"></i>4srsinc@gmail.com</span>
+                <a href="tel:4254665469" class="hover:text-brand-400 transition flex items-center gap-2"><i class="fas fa-phone-alt text-brand-500"></i>(425) 466-5469</a>
+                <a href="mailto:4srsinc@gmail.com" class="hover:text-brand-400 transition flex items-center gap-2"><i class="fas fa-envelope text-brand-500"></i>4srsinc@gmail.com</a>
             </div>
-            <div>
-                <span><i class="fas fa-clock text-amber-500 mr-2"></i>Mon - Sat: 8am – 7pm</span>
+            <div class="flex items-center space-x-6">
+                <span><i class="fas fa-clock text-brand-500 mr-2"></i>Mon - Sat: 8am – 7pm</span>
+                <span class="bg-brand-500/20 text-brand-400 px-2.5 py-0.5 rounded-full text-xs font-semibold border border-brand-500/30">WA Lic# 4SEASSR801OR</span>
             </div>
         </div>
     </div>
 
     <!-- Navigation -->
-    <header class="glass-nav sticky top-0 z-50 border-b border-slate-200">
+    <header class="glass-nav sticky top-0 z-50 border-b border-slate-200 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-12 w-auto object-contain rounded">
-                <div class="flex flex-col hidden sm:flex">
-                    <span class="text-xl font-bold tracking-tighter text-slate-900 leading-none">4 SEASONS <span class="text-amber-600">RIGHT</span></span>
-                    <span class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Services Inc.</span>
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-16 w-auto object-contain rounded transition-transform group-hover:scale-105">
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-tighter text-slate-900 leading-none">4 SEASONS <span class="text-brand-500">RIGHT</span></span>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Services Inc.</span>
                 </div>
             </a>
             
             <!-- Desktop Menu -->
-            <ul class="hidden lg:flex space-x-8 font-medium text-slate-600">
-                <li><a href="index.html" class="hover:text-amber-600 transition">Home</a></li>
-                <li><a href="about.html" class="text-amber-600 transition font-bold">About Us</a></li>
-                <li><a href="services.html" class="hover:text-amber-600 transition">Our Services</a></li>
-                <li><a href="contact.html" class="hover:text-amber-600 transition">Contact Us</a></li>
+            <ul class="hidden lg:flex space-x-8 font-semibold text-slate-600">
+                <li><a href="index.html" class="hover:text-brand-500 transition-colors py-1">Home</a></li>
+                <li><a href="about.html" class="text-brand-500 font-bold relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-brand-500">About Us</a></li>
+                <li><a href="services.html" class="hover:text-brand-500 transition-colors py-1">Our Services</a></li>
+                <li><a href="contact.html" class="hover:text-brand-500 transition-colors py-1">Contact Us</a></li>
             </ul>
 
             <div class="hidden lg:block">
-                <a href="contact.html" class="accent-gradient text-white px-6 py-2.5 rounded-md font-semibold hover:shadow-lg transition-all inline-block transform hover:-translate-y-0.5">
-                    BOOK NOW
+                <a href="contact.html" class="accent-gradient text-white px-7 py-3 rounded-xl font-bold hover:shadow-lg hover:shadow-brand-500/30 transition-all inline-block transform hover:-translate-y-0.5 animate-pulse-glow">
+                    BOOK ESTIMATE
                 </a>
             </div>
 
             <!-- Mobile Burger -->
-            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-slate-900">
+            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-slate-900 focus:outline-none" aria-label="Toggle Navigation">
                 <i class="fas fa-bars"></i>
             </button>
         </nav>
 
         <!-- Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 p-6 absolute w-full shadow-xl">
-            <ul class="space-y-4 font-medium">
-                <li><a href="index.html" class="block py-2">Home</a></li>
-                <li><a href="about.html" class="block py-2 text-amber-600">About Us</a></li>
-                <li><a href="services.html" class="block py-2">Our Services</a></li>
-                <li><a href="contact.html" class="block py-2">Contact Us</a></li>
-                <li><a href="contact.html" class="block w-full accent-gradient text-white text-center py-3 rounded-md">BOOK ESTIMATE</a></li>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 p-6 absolute w-full shadow-2xl">
+            <ul class="space-y-4 font-semibold">
+                <li><a href="index.html" class="block py-2 text-slate-700 hover:text-brand-500">Home</a></li>
+                <li><a href="about.html" class="block py-2 text-brand-500 font-bold">About Us</a></li>
+                <li><a href="services.html" class="block py-2 text-slate-700 hover:text-brand-500">Our Services</a></li>
+                <li><a href="contact.html" class="block py-2 text-slate-700 hover:text-brand-500">Contact Us</a></li>
+                <li><a href="contact.html" class="block w-full accent-gradient text-white text-center py-3.5 rounded-xl font-bold">BOOK ESTIMATE NOW</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative py-32 bg-slate-900 flex items-center overflow-hidden">
+    <section class="relative py-32 bg-slate-950 flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1541888086925-920a0b27b958?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover" alt="Construction team">
+            <img src="https://images.unsplash.com/photo-1541888086925-920a0b27b958?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-40" alt="Construction team">
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">About <span class="text-amber-500">Us</span></h1>
-            <p class="text-xl text-slate-300 max-w-2xl mx-auto">Building dreams from the ground up with ingenuity, precision, and purpose.</p>
+        <div class="container mx-auto px-6 relative z-10 text-center" data-aos="fade-up">
+            <span class="bg-brand-500/20 text-brand-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-brand-500/30 inline-block mb-4">Our Story & Heritage</span>
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6">About <span class="text-brand-500">Us</span></h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto font-medium leading-relaxed">Building dreams from the ground up with ingenuity, precision, and uncompromised purpose.</p>
         </div>
     </section>
 
@@ -89,50 +128,90 @@
         <div class="container mx-auto px-6">
             
             <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
-                <div>
-                    <h2 class="text-amber-600 font-bold tracking-widest uppercase text-sm mb-4">Who We Are</h2>
-                    <h3 class="text-4xl font-bold text-slate-900 mb-6">Welcome to 4 Seasons Right Services Inc</h3>
+                <div data-aos="fade-right">
+                    <h2 class="text-brand-500 font-extrabold tracking-widest uppercase text-sm mb-3 flex items-center gap-2">
+                        <span class="w-8 h-0.5 bg-brand-500"></span> Who We Are
+                    </h2>
+                    <h3 class="text-4xl font-extrabold text-slate-900 mb-6 leading-tight">Welcome to 4 Seasons Right Services Inc</h3>
                     <p class="text-slate-600 text-lg mb-6 leading-relaxed">
-                        Where construction meets ingenuity, not just providing bricks and finishes. We focus on purpose, precision, and the belief that every structure should serve the people living within it.
+                        Where construction meets true ingenuity. We are not just installing components or applying paint—we focus on purpose, structural integrity, and creating living spaces that serve the people within them.
                     </p>
                     <p class="text-slate-600 text-lg leading-relaxed">
-                        Our goal is to ensure that your property reflects both beauty and usability, built to last and improve your lifestyle.
+                        Our goal is to ensure that your residential or commercial property reflects both refined beauty and high usability, engineered to withstand all Washington weather conditions.
                     </p>
                 </div>
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800" class="rounded-2xl shadow-2xl relative z-10" alt="Craftsmanship">
-                    <div class="absolute -bottom-6 -right-6 w-64 h-64 accent-gradient rounded-2xl -z-0 opacity-10"></div>
+                <div class="relative" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800" class="rounded-3xl shadow-2xl relative z-10 border-4 border-white" alt="Craftsmanship">
+                    <div class="absolute -bottom-6 -right-6 w-64 h-64 accent-gradient rounded-3xl -z-0 opacity-20"></div>
                 </div>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-16 items-center mb-24 flex-col-reverse lg:flex-row-reverse">
-                <div class="relative lg:order-2">
-                    <h2 class="text-amber-600 font-bold tracking-widest uppercase text-sm mb-4">What We Do</h2>
-                    <h3 class="text-4xl font-bold text-slate-900 mb-6">Delivering Lasting Impressions With Seamless Execution</h3>
+            <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
+                <div class="relative lg:order-2" data-aos="fade-left">
+                    <h2 class="text-brand-500 font-extrabold tracking-widest uppercase text-sm mb-3 flex items-center gap-2">
+                        <span class="w-8 h-0.5 bg-brand-500"></span> What We Do
+                    </h2>
+                    <h3 class="text-4xl font-extrabold text-slate-900 mb-6 leading-tight">Delivering Lasting Impressions With Seamless Execution</h3>
                     <p class="text-slate-600 text-lg mb-6 leading-relaxed">
-                        Our contractors transform places with perfect roofing, sturdy flooring, and premium painting. We handle each task with the best craftsmanship and durable materials to deliver lasting value and an elegant look every time. 
+                        Our licensed contractors transform spaces with resilient roofing, durable flooring, robust framing, and flawless painting. We handle every task with premium craftsmanship and long-lasting materials.
                     </p>
                     <p class="text-slate-600 text-lg leading-relaxed">
-                        From large scale framing to the finest interior refinements, we upgrade everyday environments to support real life and provide comfort. Our work speaks through clean lines and solid structures that stand tall through all four seasons.
+                        From structural refinements to interior design touches, we elevate environments for total comfort and reliability through all four seasons.
                     </p>
                 </div>
-                <div class="relative lg:order-1">
-                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800" class="rounded-2xl shadow-2xl relative z-10" alt="Architecture">
-                    <div class="absolute -top-6 -left-6 w-64 h-64 bg-slate-200 rounded-2xl -z-0"></div>
+                <div class="relative lg:order-1" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800" class="rounded-3xl shadow-2xl relative z-10 border-4 border-white" alt="Architecture">
+                    <div class="absolute -top-6 -left-6 w-64 h-64 bg-brand-500/10 rounded-3xl -z-0"></div>
                 </div>
             </div>
 
-            <div class="bg-slate-50 p-12 md:p-16 rounded-3xl border border-slate-100 shadow-sm text-center max-w-4xl mx-auto">
-                <h2 class="text-amber-600 font-bold tracking-widest uppercase text-sm mb-4">Our Journey</h2>
-                <h3 class="text-4xl font-bold text-slate-900 mb-6">Legacy Through Craft</h3>
-                <p class="text-slate-600 text-lg mb-6 leading-relaxed">
-                    With years of expertise in commercial and residential spaces, we perfectly cover every aspect of the process from start to finish, ensuring flawless details. Our remodelers redefine both interiors and exteriors to bring your dream place into reality.
+            <!-- NEW EXPANDED SECTION: Core Values -->
+            <div class="mb-24" data-aos="fade-up">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-brand-500 font-extrabold tracking-widest uppercase text-sm mb-3">Our Foundation</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Our Core Principles</h3>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:shadow-xl transition-all group">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-500 group-hover:text-white transition-all">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-3">Precision Engineering</h4>
+                        <p class="text-slate-600 leading-relaxed">Every measurement, cut, and finish is executed to exact specification without taking shortcuts.</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:shadow-xl transition-all group">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-500 group-hover:text-white transition-all">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-3">Transparent Integrity</h4>
+                        <p class="text-slate-600 leading-relaxed">Clear upfront pricing, honest timelines, and continuous communication throughout your project.</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:shadow-xl transition-all group">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-500 group-hover:text-white transition-all">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-3">Guaranteed Longevity</h4>
+                        <p class="text-slate-600 leading-relaxed">We select superior weather-resistant materials designed to stand strong for decades to come.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legacy Journey Card -->
+            <div class="bg-slate-900 text-white p-12 md:p-16 rounded-3xl border border-slate-800 shadow-2xl text-center max-w-4xl mx-auto relative overflow-hidden" data-aos="zoom-in">
+                <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <h2 class="text-brand-400 font-extrabold tracking-widest uppercase text-sm mb-3">Our Journey</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-6">Legacy Through Exceptional Craft</h3>
+                <p class="text-slate-300 text-lg mb-6 leading-relaxed font-normal">
+                    With extensive expertise across Washington state, we oversee every phase from initial layout to final polish. Our remodelers and structural experts redefine interiors and exteriors to turn your architectural vision into reality.
                 </p>
-                <p class="text-slate-600 text-lg mb-8 leading-relaxed">
-                    We focus on sustainable solutions and install optimized layouts that improve energy efficiency and the value of your property. Our team delivers customized assistance and budget friendly rates to set new benchmarks of quality and reliability. We also provide transparent communication, clear timelines, and flexible schedules to ensure customer satisfaction in every project. Each beam, wire, and finish we fix serves a purpose of functionality and aesthetics. Staying up to date with in demand trends of building, painting, and remodeling, our professionals deliver personalized results that meet your needs.
+                <p class="text-slate-300 text-lg mb-8 leading-relaxed font-normal">
+                    Staying ahead with modern building technologies, we deliver customized assistance and competitive rates, setting new benchmarks for reliability.
                 </p>
-                <a href="contact.html" class="accent-gradient text-white px-10 py-4 rounded-md font-bold text-lg hover:shadow-xl transition inline-block">
-                    So, why are you waiting? Get our services now.
+                <a href="contact.html" class="accent-gradient text-white px-10 py-4 rounded-xl font-extrabold text-lg shadow-xl hover:shadow-brand-500/30 transition inline-block transform hover:-translate-y-1">
+                    Get Started With Us Today <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
 
@@ -140,42 +219,49 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 text-white pt-20 pb-10">
+    <footer class="bg-slate-950 text-white pt-20 pb-10 border-t border-slate-800">
         <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12 mb-16">
             <div class="col-span-2">
                 <div class="flex items-center gap-4 mb-6">
                     <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-16 w-auto object-contain rounded bg-white/10 p-1">
                     <div class="flex flex-col">
-                        <span class="text-2xl font-bold tracking-tighter">4 SEASONS <span class="text-amber-500">RIGHT</span></span>
-                        <span class="text-xs uppercase tracking-[0.3em] text-slate-500">Services Inc.</span>
+                        <span class="text-2xl font-extrabold tracking-tighter">4 SEASONS <span class="text-brand-500">RIGHT</span></span>
+                        <span class="text-xs uppercase tracking-[0.3em] text-slate-400 font-bold">Services Inc.</span>
                     </div>
                 </div>
-                <p class="text-slate-400 max-w-sm">
-                    A Washington licensed and bonded contractor providing premium renovations for commercial and residential clients. Built on efficiency and trust.
+                <p class="text-slate-400 max-w-sm leading-relaxed">
+                    A Washington licensed and bonded contractor providing premium renovations for commercial and residential clients. Built on efficiency, craftsmanship, and trust.
                 </p>
             </div>
             <div>
-                <h5 class="font-bold mb-6">Quick Links</h5>
-                <ul class="space-y-3 text-slate-400">
-                    <li><a href="index.html" class="hover:text-amber-500">Home</a></li>
-                    <li><a href="about.html" class="hover:text-amber-500">About Us</a></li>
-                    <li><a href="services.html" class="hover:text-amber-500">Services</a></li>
-                    <li><a href="contact.html" class="hover:text-amber-500">Contact Us</a></li>
+                <h5 class="font-bold text-lg mb-6 text-white border-l-4 border-brand-500 pl-3">Quick Links</h5>
+                <ul class="space-y-3 text-slate-400 font-medium">
+                    <li><a href="index.html" class="hover:text-brand-500 transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-brand-500 transition-colors">About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brand-500 transition-colors">Services</a></li>
+                    <li><a href="contact.html" class="hover:text-brand-500 transition-colors">Contact Us</a></li>
                 </ul>
             </div>
             <div>
-                <h5 class="font-bold mb-6">Contact</h5>
-                <p class="text-slate-400 mb-2"><i class="fas fa-phone-alt mr-2 text-amber-500"></i>(425) 466-5469</p>
-                <p class="text-slate-400"><i class="fas fa-envelope mr-2 text-amber-500"></i>4srsinc@gmail.com</p>
-                <p class="text-slate-400 mt-4 italic">Lic# 4SEASSR801OR</p>
+                <h5 class="font-bold text-lg mb-6 text-white border-l-4 border-brand-500 pl-3">Contact Us</h5>
+                <p class="text-slate-400 mb-3"><a href="tel:4254665469" class="hover:text-brand-400 transition flex items-center"><i class="fas fa-phone-alt mr-3 text-brand-500"></i>(425) 466-5469</a></p>
+                <p class="text-slate-400 mb-3"><a href="mailto:4srsinc@gmail.com" class="hover:text-brand-400 transition flex items-center"><i class="fas fa-envelope mr-3 text-brand-500"></i>4srsinc@gmail.com</a></p>
+                <p class="text-slate-400 mt-4 italic text-sm">Lic# 4SEASSR801OR</p>
             </div>
         </div>
-        <div class="container mx-auto px-6 pt-10 border-t border-white/5 text-center text-slate-500 text-sm">
+        <div class="container mx-auto px-6 pt-10 border-t border-white/10 text-center text-slate-500 text-sm font-medium">
             &copy; 2026 4 Seasons Right Services Inc | Powered by Nova Tech Studio LLC.
         </div>
     </footer>
 
+    <!-- Floating Quick Call / Action Widget -->
+    <a href="tel:4254665469" class="fixed bottom-6 right-6 z-50 bg-brand-500 hover:bg-brand-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl animate-pulse-glow transition transform hover:scale-110" title="Call Now">
+        <i class="fas fa-phone-alt text-xl"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        AOS.init({ duration: 800, once: true });
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileBtn?.addEventListener('click', () => {

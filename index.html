@@ -6,8 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4 Seasons Right Services Inc | Premium Contracting WA</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#FFF5F2',
+                            100: '#FFEAE4',
+                            200: '#FFD5CB',
+                            300: '#FFA996',
+                            400: '#FF7659',
+                            500: '#FD441B',
+                            600: '#E03009',
+                            700: '#BA2203',
+                            800: '#9B1F07',
+                            900: '#7F200C'
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(253, 68, 27, 0.4)' },
+                            '50%': { boxShadow: '0 0 30px rgba(253, 68, 27, 0.8)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -15,459 +59,492 @@
 
         .glass-nav {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
         }
 
         .accent-gradient {
-            background: linear-gradient(135deg, #FD431A 0%, #FD431A 100%);
+            background: linear-gradient(135deg, #FD441B 0%, #FF6B4A 100%);
+        }
+
+        .accent-gradient-hover:hover {
+            background: linear-gradient(135deg, #E03009 0%, #FD441B 100%);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #FD441B 0%, #FF7659 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-overlay {
-            background: rgba(15, 23, 42, 0.6);
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75));
+        }
+
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(253, 68, 27, 0.15);
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+            animation-delay: 4s;
         }
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
 
     <!-- Top Announcement Bar -->
-    <div class="bg-slate-900 text-white py-2 px-4 text-sm hidden md:block">
+    <div class="bg-slate-900 text-white py-2.5 px-4 text-sm hidden md:block border-b border-slate-800">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex space-x-6">
-                <span><i class="fas fa-phone-alt text-amber-500 mr-2"></i>(425) 466-5469</span>
-                <span><i class="fas fa-envelope text-amber-500 mr-2"></i>4srsinc@gmail.com</span>
+                <a href="tel:4254665469" class="hover:text-brand-400 transition flex items-center gap-2"><i class="fas fa-phone-alt text-brand-500"></i>(425) 466-5469</a>
+                <a href="mailto:4srsinc@gmail.com" class="hover:text-brand-400 transition flex items-center gap-2"><i class="fas fa-envelope text-brand-500"></i>4srsinc@gmail.com</a>
             </div>
-            <div>
-                <span><i class="fas fa-clock text-amber-500 mr-2"></i>Mon - Sat: 8am – 7pm</span>
+            <div class="flex items-center space-x-6">
+                <span><i class="fas fa-clock text-brand-500 mr-2"></i>Mon - Sat: 8am – 7pm</span>
+                <span class="bg-brand-500/20 text-brand-400 px-2.5 py-0.5 rounded-full text-xs font-semibold border border-brand-500/30">WA Lic# 4SEASSR801OR</span>
             </div>
         </div>
     </div>
 
     <!-- Navigation -->
-    <header class="glass-nav sticky top-0 z-50 border-b border-slate-200">
+    <header class="glass-nav sticky top-0 z-50 border-b border-slate-200 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="images/logo.jpg" alt="4 Seasons Right Services Logo"
-                    class="h-20 w-auto object-contain rounded">
-
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-16 w-auto object-contain rounded transition-transform group-hover:scale-105">
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-tighter text-slate-900 leading-none">4 SEASONS <span class="text-brand-500">RIGHT</span></span>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Services Inc.</span>
+                </div>
             </a>
 
             <!-- Desktop Menu -->
-            <ul class="hidden lg:flex space-x-8 font-medium text-slate-600">
-                <li><a href="index.html" class="text-amber-600 transition font-bold">Home</a></li>
-                <li><a href="about.html" class="hover:text-amber-600 transition">About Us</a></li>
-                <li><a href="services.html" class="hover:text-amber-600 transition">Our Services</a></li>
-                <li><a href="contact.html" class="hover:text-amber-600 transition">Contact Us</a></li>
+            <ul class="hidden lg:flex space-x-8 font-semibold text-slate-600">
+                <li><a href="index.html" class="text-brand-500 font-bold relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-brand-500">Home</a></li>
+                <li><a href="about.html" class="hover:text-brand-500 transition-colors py-1">About Us</a></li>
+                <li><a href="services.html" class="hover:text-brand-500 transition-colors py-1">Our Services</a></li>
+                <li><a href="contact.html" class="hover:text-brand-500 transition-colors py-1">Contact Us</a></li>
             </ul>
 
             <div class="hidden lg:block">
                 <a href="contact.html"
-                    class="accent-gradient text-white px-6 py-2.5 rounded-md font-semibold hover:shadow-lg transition-all inline-block transform hover:-translate-y-0.5">
-                    BOOK NOW
+                    class="accent-gradient text-white px-7 py-3 rounded-xl font-bold hover:shadow-lg hover:shadow-brand-500/30 transition-all inline-block transform hover:-translate-y-0.5 active:translate-y-0 animate-pulse-glow">
+                    BOOK ESTIMATE
                 </a>
             </div>
 
             <!-- Mobile Burger -->
-            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-slate-900">
+            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-slate-900 focus:outline-none" aria-label="Toggle Navigation">
                 <i class="fas fa-bars"></i>
             </button>
         </nav>
 
         <!-- Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 p-6 absolute w-full shadow-xl">
-            <ul class="space-y-4 font-medium">
-                <li><a href="index.html" class="block py-2 text-amber-600">Home</a></li>
-                <li><a href="about.html" class="block py-2">About Us</a></li>
-                <li><a href="services.html" class="block py-2">Our Services</a></li>
-                <li><a href="contact.html" class="block py-2">Contact Us</a></li>
-                <li><a href="contact.html"
-                        class="block w-full accent-gradient text-white text-center py-3 rounded-md">BOOK ESTIMATE</a>
-                </li>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 p-6 absolute w-full shadow-2xl transition-all">
+            <ul class="space-y-4 font-semibold">
+                <li><a href="index.html" class="block py-2 text-brand-500 font-bold">Home</a></li>
+                <li><a href="about.html" class="block py-2 text-slate-700 hover:text-brand-500">About Us</a></li>
+                <li><a href="services.html" class="block py-2 text-slate-700 hover:text-brand-500">Our Services</a></li>
+                <li><a href="contact.html" class="block py-2 text-slate-700 hover:text-brand-500">Contact Us</a></li>
+                <li><a href="contact.html" class="block w-full accent-gradient text-white text-center py-3.5 rounded-xl font-bold shadow-lg">BOOK ESTIMATE NOW</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative h-[85vh] flex items-center overflow-hidden">
+    <section class="relative min-h-[88vh] flex items-center overflow-hidden bg-slate-950">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000"
-                class="w-full h-full object-cover" alt="Modern Home">
+                class="w-full h-full object-cover opacity-60 scale-105 animate-pulse-slow" alt="Modern Home Renovation">
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
 
-        <div class="container mx-auto px-6 relative z-10 text-white">
-            <div class="max-w-3xl">
-                <span
-                    class="inline-block bg-amber-600/20 text-amber-400 px-4 py-1 rounded-full text-sm font-semibold mb-4 border border-amber-600/30">
-                    Licensed & Bonded Contractor
+        <!-- Floating Decorative Blobs -->
+        <div class="absolute top-1/4 left-10 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl animate-blob pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-orange-600/15 rounded-full blur-3xl animate-blob animation-delay-2000 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 text-white py-20">
+            <div class="max-w-3xl" data-aos="fade-right" data-aos-duration="1000">
+                <span class="inline-flex items-center gap-2 bg-brand-500/20 text-brand-400 px-4 py-1.5 rounded-full text-sm font-bold mb-6 border border-brand-500/40 shadow-inner">
+                    <i class="fas fa-star text-brand-500"></i> Washington's Licensed & Bonded Experts
                 </span>
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                    Light The Way for Your Next <span class="text-amber-500">Renovation</span>.
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight">
+                    Light The Way For Your Next <span class="text-gradient">Renovation</span>.
                 </h1>
-                <p class="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed max-w-xl">
-                    From kitchen remodels to commercial developments, we provide efficient solutions for homeowners and
-                    businesses across Washington.
+                <p class="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed font-normal max-w-2xl">
+                    4 Seasons Right Services Inc. delivers high-end residential & commercial transformations across Washington. From precision framing to custom roofing and luxury interiors.
                 </p>
+                
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="services.html"
-                        class="accent-gradient text-white px-8 py-4 rounded-md font-bold text-lg hover:shadow-xl transition text-center">
-                        Browse Services
+                    <a href="contact.html" class="accent-gradient text-white px-8 py-4 rounded-xl font-extrabold text-lg text-center shadow-xl hover:shadow-brand-500/40 transition transform hover:-translate-y-1">
+                        Get Your Free Consultation <i class="fas fa-arrow-right ml-2"></i>
                     </a>
-                    <a href="contact.html"
-                        class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-white hover:text-slate-900 transition text-center">
-                        Book an Estimate
+                    <a href="services.html" class="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-xl font-bold text-lg text-center transition transform hover:-translate-y-1">
+                        Explore All Services
                     </a>
+                </div>
+
+                <!-- Live Stats Banner -->
+                <div class="grid grid-cols-3 gap-6 mt-16 pt-8 border-t border-white/10 max-w-2xl" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <p class="text-3xl sm:text-4xl font-extrabold text-brand-500">15+</p>
+                        <p class="text-xs sm:text-sm text-slate-400 font-medium">Years Experience</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl sm:text-4xl font-extrabold text-brand-500">500+</p>
+                        <p class="text-xs sm:text-sm text-slate-400 font-medium">Projects Completed</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl sm:text-4xl font-extrabold text-brand-500">100%</p>
+                        <p class="text-xs sm:text-sm text-slate-400 font-medium">Quality Guaranteed</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Brief About Summary Section -->
-    <section class="py-24 bg-white overflow-hidden">
+    <!-- About Section -->
+    <section class="py-24 bg-white relative overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="relative">
-                    <div
-                        class="absolute -top-10 -left-10 w-72 h-72 bg-amber-100 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob">
+                <div class="relative" data-aos="fade-right">
+                    <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1541888086925-920a0b27b958?auto=format&fit=crop&q=80&w=1000"
+                            alt="Construction Craftsmanship" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
                     </div>
-                    <div
-                        class="absolute -bottom-10 -right-10 w-72 h-72 bg-amber-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000">
+                    <!-- Background Accent Shapes -->
+                    <div class="absolute -top-6 -left-6 w-72 h-72 bg-brand-500/10 rounded-3xl -z-0 animate-pulse"></div>
+                    <div class="absolute -bottom-6 -right-6 w-72 h-72 bg-slate-200 rounded-3xl -z-0"></div>
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-8 -left-8 glass-nav p-6 rounded-2xl shadow-xl border border-slate-100 z-20 flex items-center gap-4 animate-float">
+                        <div class="w-14 h-14 rounded-xl bg-brand-500 flex items-center justify-center text-white text-2xl shadow-lg shadow-brand-500/40">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div>
+                            <p class="text-lg font-bold text-slate-900">Licensed Contractor</p>
+                            <p class="text-xs text-slate-500">Certified & Insured in WA</p>
+                        </div>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800"
-                        class="rounded-2xl shadow-2xl relative z-10 w-full h-[500px] object-cover"
-                        alt="Premium Construction">
+                </div>
 
-                    <!-- Floating Stat Box -->
-                    <div
-                        class="absolute -bottom-8 -right-8 bg-white p-6 rounded-xl shadow-xl z-20 border border-slate-100 hidden md:block">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center">
-                                <i class="fas fa-medal text-amber-600 text-xl"></i>
-                            </div>
+                <div data-aos="fade-left">
+                    <h2 class="text-brand-500 font-extrabold tracking-widest uppercase text-sm mb-3 flex items-center gap-2">
+                        <span class="w-8 h-0.5 bg-brand-500"></span> About Our Firm
+                    </h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
+                        Craftsmanship & Integrity Across All 4 Seasons
+                    </h3>
+                    <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+                        At 4 Seasons Right Services Inc., construction meets true ingenuity. We go beyond basic structures—focusing on purpose, precision, and building modern environments tailored for long-term durability.
+                    </p>
+
+                    <!-- Core Features Grid -->
+                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100 hover:border-brand-200 transition">
+                            <i class="fas fa-shield-alt text-brand-500 text-xl mt-1"></i>
                             <div>
-                                <div class="text-2xl font-bold text-slate-900">10+ Years</div>
-                                <div class="text-sm text-slate-500 font-medium">Of Excellence</div>
+                                <h4 class="font-bold text-slate-900">Fully Licensed & Bonded</h4>
+                                <p class="text-xs text-slate-500">100% compliant & protected</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100 hover:border-brand-200 transition">
+                            <i class="fas fa-building text-brand-500 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Commercial & Residential</h4>
+                                <p class="text-xs text-slate-500">Tailored solutions for all spaces</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100 hover:border-brand-200 transition">
+                            <i class="fas fa-clock text-brand-500 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-900">On-Time Delivery</h4>
+                                <p class="text-xs text-slate-500">Strict project scheduling</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100 hover:border-brand-200 transition">
+                            <i class="fas fa-leaf text-brand-500 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Sustainable Solutions</h4>
+                                <p class="text-xs text-slate-500">Eco-friendly materials</p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="relative z-10">
-                    <h2 class="text-amber-600 font-bold tracking-widest uppercase text-sm mb-4 flex items-center">
-                        <span class="w-8 h-0.5 bg-amber-600 mr-3"></span> About Our Firm
-                    </h2>
-                    <h3 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">Expertise Driven by
-                        <span class="text-orange-600">Quality</span> & Integrity</h3>
-                    <p class="text-slate-600 text-lg mb-8 leading-relaxed">
-                        4 Seasons Right Services Inc is a premier Washington-based general contractor. Where
-                        construction meets ingenuity, we focus on purpose, precision, and the belief that every
-                        structure should serve the people living within it. We transform ordinary spaces into
-                        extraordinary environments built to last through all seasons.
-                    </p>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                        <div class="flex items-center bg-slate-50 p-4 rounded-lg border border-slate-100">
-                            <i class="fas fa-shield-alt text-amber-600 text-2xl mr-4"></i>
-                            <span class="text-[#FD431A] 0 font-semibold">Fully Licensed & Bonded</span>
-                        </div>
-                        <div class="flex items-center bg-slate-50 p-4 rounded-lg border border-slate-100">
-                            <i class="fas fa-building text-amber-600 text-2xl mr-4"></i>
-                            <span class="text-[#FD431A] font-semibold">Commercial & Residential</span>
-                        </div>
-                        <div class="flex items-center bg-slate-50 p-4 rounded-lg border border-slate-100">
-                            <i class="fas fa-clock text-amber-600 text-2xl mr-4"></i>
-                            <span class="text-[#FD431A] 0 font-semibold">On-Time Delivery</span>
-                        </div>
-                        <div class="flex items-center bg-slate-50 p-4 rounded-lg border border-slate-100">
-                            <i class="fas fa-leaf text-amber-600 text-2xl mr-4"></i>
-                            <span class="text-[#FD431A] 0 font-semibold">Sustainable Solutions</span>
-                        </div>
-                    </div>
-
-                    <a href="about.html"
-                        class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 accent-gradient border border-transparent rounded-lg hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-600 transform hover:-translate-y-0.5">
-                        Discover Our Story <i class="fas fa-arrow-right ml-2"></i>
+                    <a href="about.html" class="accent-gradient text-white px-8 py-3.5 rounded-xl font-bold inline-flex items-center gap-2 shadow-lg hover:shadow-brand-500/30 transition transform hover:-translate-y-0.5">
+                        Learn More About Us <i class="fas fa-chevron-right text-sm"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Highlight Section -->
-    <section class="py-24 bg-slate-50 relative">
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2
-                    class="text-amber-600 font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center">
-                    <span class="w-8 h-0.5 bg-amber-600 mr-3"></span> What We Do <span
-                        class="w-8 h-0.5 bg-amber-600 ml-3"></span>
+    <!-- Services Overview Section -->
+    <section class="py-24 bg-slate-100 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-brand-500 font-extrabold tracking-widest uppercase text-sm mb-3 flex items-center justify-center gap-2">
+                    <span class="w-8 h-0.5 bg-brand-500"></span> What We Do <span class="w-8 h-0.5 bg-brand-500"></span>
                 </h2>
-                <h3 class="text-4xl font-bold mb-4">Our Top Services</h3>
-                <p class="text-slate-600 text-lg">Tailored renovation solutions for every corner of your property.</p>
+                <h3 class="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-4">Our Core Specializations</h3>
+                <p class="text-slate-600 text-lg">Delivering perfection across roofing, framing, flooring, and interior remodels.</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8 mb-16">
-                <!-- Service Card 1 -->
-                <div
-                    class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2">
-                    <div
-                        class="w-16 h-16 bg-amber-50 rounded-xl flex items-center justify-center mb-8 group-hover:accent-gradient transition-colors duration-300">
-                        <i
-                            class="fas fa-utensils text-3xl text-amber-600 group-hover:text-white transition-colors duration-300"></i>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md service-card border border-slate-200/60 group flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800"
+                            alt="Kitchen & Bath Remodeling" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 right-4 bg-brand-500 text-white p-3 rounded-2xl shadow-lg">
+                            <i class="fas fa-bath text-xl"></i>
+                        </span>
+                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Kitchen & Bath</h3>
                     </div>
-                    <h4 class="text-2xl font-bold mb-4 group-hover:text-amber-600 transition-colors">Kitchen & Bath</h4>
-                    <p class="text-slate-600 mb-6 leading-relaxed">Modern, functional culinary spaces and spa-like
-                        retreats designed for the heart of your home, increasing property value and comfort.</p>
-                    <a href="services.html"
-                        class="text-amber-600 font-bold text-sm uppercase tracking-wider flex items-center group-hover:text-amber-700">
-                        Read More <i
-                            class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </a>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <p class="text-slate-600 mb-6 flex-grow leading-relaxed">Transforming daily living with luxury cabinetry, custom countertops, modern lighting, and optimized functional layouts.</p>
+                        <a href="services.html" class="text-brand-500 font-bold flex items-center gap-2 group-hover:gap-3 transition-all">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
-                <!-- Service Card 2 -->
-                <div
-                    class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2">
-                    <div
-                        class="w-16 h-16 bg-amber-50 rounded-xl flex items-center justify-center mb-8 group-hover:accent-gradient transition-colors duration-300">
-                        <i
-                            class="fas fa-paint-roller text-3xl text-amber-600 group-hover:text-white transition-colors duration-300"></i>
+
+                <!-- Service 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md service-card border border-slate-200/60 group flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=800"
+                            alt="Roofing Contracting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 right-4 bg-brand-500 text-white p-3 rounded-2xl shadow-lg">
+                            <i class="fas fa-home text-xl"></i>
+                        </span>
+                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Roofing Contracting</h3>
                     </div>
-                    <h4 class="text-2xl font-bold mb-4 group-hover:text-amber-600 transition-colors">Painting & Drywall
-                    </h4>
-                    <p class="text-slate-600 mb-6 leading-relaxed">Precision interior and exterior painting coupled with
-                        seamless drywall installation to provide vibrant and flawless outcomes.</p>
-                    <a href="services.html"
-                        class="text-amber-600 font-bold text-sm uppercase tracking-wider flex items-center group-hover:text-amber-700">
-                        Read More <i
-                            class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </a>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <p class="text-slate-600 mb-6 flex-grow leading-relaxed">Weatherproof roofing systems built to withstand heavy rainfall, winds, and seasonal climate shifts with architectural precision.</p>
+                        <a href="services.html" class="text-brand-500 font-bold flex items-center gap-2 group-hover:gap-3 transition-all">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
-                <!-- Service Card 3 -->
-                <div
-                    class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2">
-                    <div
-                        class="w-16 h-16 bg-amber-50 rounded-xl flex items-center justify-center mb-8 group-hover:accent-gradient transition-colors duration-300">
-                        <i
-                            class="fas fa-home text-3xl text-amber-600 group-hover:text-white transition-colors duration-300"></i>
+
+                <!-- Service 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md service-card border border-slate-200/60 group flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800"
+                            alt="Flooring Contracting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 right-4 bg-brand-500 text-white p-3 rounded-2xl shadow-lg">
+                            <i class="fas fa-layer-group text-xl"></i>
+                        </span>
+                        <h3 class="absolute bottom-4 left-6 text-2xl font-bold text-white">Flooring Contracting</h3>
                     </div>
-                    <h4 class="text-2xl font-bold mb-4 group-hover:text-amber-600 transition-colors">Deck, Siding &
-                        Roofs</h4>
-                    <p class="text-slate-600 mb-6 leading-relaxed">Durable exterior solutions designed to withstand all
-                        seasons, enhancing both the curb appeal and structural integrity of your property.</p>
-                    <a href="services.html"
-                        class="text-amber-600 font-bold text-sm uppercase tracking-wider flex items-center group-hover:text-amber-700">
-                        Read More <i
-                            class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </a>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <p class="text-slate-600 mb-6 flex-grow leading-relaxed">Premium hardwood, tile, and luxury vinyl tile (LVT) installations engineered for durability and effortless aesthetic appeal.</p>
+                        <a href="services.html" class="text-brand-500 font-bold flex items-center gap-2 group-hover:gap-3 transition-all">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
 
-            <div class="text-center">
-                <a href="services.html"
-                    class="inline-flex items-center justify-center px-10 py-4 text-base font-bold text-slate-900 transition-all duration-200 bg-white border-2 border-amber-600 rounded-lg hover:bg-amber-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-600 transform hover:-translate-y-0.5">
-                    View All 11 Services
+            <div class="text-center mt-12">
+                <a href="services.html" class="bg-slate-900 hover:bg-slate-800 text-white px-9 py-4 rounded-xl font-bold text-lg inline-flex items-center gap-3 transition shadow-lg hover:shadow-xl">
+                    View All 10 Services <i class="fas fa-th-large text-brand-500"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
-    <section class="py-24 bg-slate-900 text-white">
-        <div class="container mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-amber-500 font-bold tracking-widest uppercase text-sm mb-4 flex items-center">
-                        <span class="w-8 h-0.5 bg-amber-500 mr-3"></span> Why Choose Us
-                    </h2>
-                    <h3 class="text-4xl md:text-5xl font-bold mb-6">Building Trust Through <span
-                            class="text-amber-500">Excellence</span></h3>
-                    <p class="text-slate-400 text-lg mb-10 leading-relaxed">
-                        We don't just build structures; we build long-lasting relationships with our clients based on
-                        transparency, reliability, and superior craftsmanship.
-                    </p>
+    <!-- NEW EXPANDED SECTION: Interactive Instant Estimate Calculator -->
+    <section class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto bg-slate-800/80 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-slate-700/60 shadow-2xl" data-aos="zoom-in">
+                <div class="text-center mb-10">
+                    <span class="bg-brand-500/20 text-brand-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-brand-500/30 inline-block mb-3">Instant Tool</span>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">Estimate Your Project Cost</h3>
+                    <p class="text-slate-400 text-sm sm:text-base">Select your service and approximate square footage to generate an instant budget estimation.</p>
+                </div>
 
+                <div class="grid md:grid-cols-2 gap-8 items-center">
                     <div class="space-y-6">
-                        <div class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <div
-                                    class="flex items-center justify-center w-12 h-12 rounded-full bg-white/10 text-amber-500">
-                                    <i class="fas fa-tools text-xl"></i>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-xl font-bold">Premium Materials</h4>
-                                <p class="mt-2 text-slate-400">We source only the highest quality materials to ensure
-                                    your renovations stand the test of time.</p>
-                            </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-300 mb-2">1. Select Project Type</label>
+                            <select id="calc-service" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-brand-500 transition font-medium">
+                                <option value="15" selected>Kitchen & Bath Remodeling ($15/sqft avg)</option>
+                                <option value="8">Roofing Replacement / Installation ($8/sqft avg)</option>
+                                <option value="6">Flooring & Tile Contracting ($6/sqft avg)</option>
+                                <option value="4">Interior & Exterior Painting ($4/sqft avg)</option>
+                                <option value="12">Structural Framing ($12/sqft avg)</option>
+                            </select>
                         </div>
-                        <div class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <div
-                                    class="flex items-center justify-center w-12 h-12 rounded-full bg-white/10 text-amber-500">
-                                    <i class="fas fa-hard-hat text-xl"></i>
-                                </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-bold text-slate-300 mb-2">
+                                <span>2. Approximate Area</span>
+                                <span class="text-brand-400 font-extrabold" id="calc-sqft-val">500 sq ft</span>
                             </div>
-                            <div class="ml-4">
-                                <h4 class="text-xl font-bold">Expert Craftsmanship</h4>
-                                <p class="mt-2 text-slate-400">Our skilled professionals bring decades of combined
-                                    experience to every single detail of your project.</p>
-                            </div>
-                        </div>
-                        <div class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <div
-                                    class="flex items-center justify-center w-12 h-12 rounded-full bg-white/10 text-amber-500">
-                                    <i class="fas fa-handshake text-xl"></i>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-xl font-bold">Transparent Communication</h4>
-                                <p class="mt-2 text-slate-400">We keep you informed at every stage, providing clear
-                                    timelines and budget-friendly rates without hidden fees.</p>
-                            </div>
+                            <input type="range" id="calc-sqft" min="100" max="3000" step="50" value="500" class="w-full accent-brand-500 h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer">
                         </div>
                     </div>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356f12?auto=format&fit=crop&q=80&w=600"
-                        class="rounded-2xl w-full h-64 object-cover mt-12 shadow-lg" alt="Construction Work">
-                    <img src="https://images.unsplash.com/photo-1541888086925-920a0b27b958?auto=format&fit=crop&q=80&w=600"
-                        class="rounded-2xl w-full h-64 object-cover shadow-lg" alt="Team at Work">
+
+                    <div class="bg-slate-950 p-8 rounded-2xl border border-brand-500/30 text-center flex flex-col justify-center items-center shadow-inner">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Estimated Investment Range</p>
+                        <div class="text-4xl sm:text-5xl font-extrabold text-brand-500 my-2 tracking-tight" id="calc-result">
+                            $6,000 - $9,000
+                        </div>
+                        <p class="text-xs text-slate-500 mb-6">Final quotes depend on specific materials & structural layout.</p>
+                        <a href="contact.html" class="w-full accent-gradient text-white py-3.5 rounded-xl font-bold hover:shadow-lg hover:shadow-brand-500/40 transition block text-center">
+                            Lock In Your Quote <i class="fas fa-calendar-check ml-2"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Recent Projects Gallery Preview -->
+    <!-- NEW EXPANDED SECTION: Frequently Asked Questions Accordion -->
     <section class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                <div>
-                    <h2 class="text-amber-600 font-bold tracking-widest uppercase text-sm mb-4 flex items-center">
-                        <span class="w-8 h-0.5 bg-amber-600 mr-3"></span> Portfolio
-                    </h2>
-                    <h3 class="text-4xl font-bold text-slate-900">Featured Projects</h3>
-                </div>
-                <a href="contact.html" class="text-amber-600 font-bold hover:underline flex items-center">
-                    Start Your Project <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-brand-500 font-extrabold tracking-widest uppercase text-sm mb-3">Got Questions?</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Frequently Asked Questions</h3>
             </div>
 
-            <div class="grid md:grid-cols-4 gap-4">
-                <div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-2xl h-96">
-                    <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&w=800"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        alt="Kitchen Remodel">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                        <h4
-                            class="text-white text-2xl font-bold mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                            Modern Kitchen Reno</h4>
-                        <p
-                            class="text-slate-300 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-                            Interior Remodeling</p>
+            <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+                <!-- FAQ 1 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition hover:border-brand-300">
+                    <button class="faq-btn w-full px-6 py-5 text-left font-bold text-lg text-slate-900 flex justify-between items-center focus:outline-none bg-slate-50 hover:bg-slate-100 transition">
+                        <span>Are you licensed and insured in Washington State?</span>
+                        <i class="fas fa-chevron-down text-brand-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 py-5 bg-white border-t border-slate-100 text-slate-600 leading-relaxed">
+                        Yes! 4 Seasons Right Services Inc. is fully licensed, bonded, and insured under Washington License #4SEASSR801OR. We strictly adhere to all state building codes and safety regulations.
                     </div>
                 </div>
-                <div class="group relative overflow-hidden rounded-2xl h-48">
-                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        alt="Deck Installation">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                        <h4 class="text-white font-bold">Outdoor Deck</h4>
+
+                <!-- FAQ 2 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition hover:border-brand-300">
+                    <button class="faq-btn w-full px-6 py-5 text-left font-bold text-lg text-slate-900 flex justify-between items-center focus:outline-none bg-slate-50 hover:bg-slate-100 transition">
+                        <span>How do I get an exact estimate for my project?</span>
+                        <i class="fas fa-chevron-down text-brand-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 py-5 bg-white border-t border-slate-100 text-slate-600 leading-relaxed">
+                        You can fill out our contact form or give us a call at (425) 466-5469. We schedule an on-site consultation to take precise measurements, inspect requirements, and provide a detailed, itemized quote.
                     </div>
                 </div>
-                <div class="group relative overflow-hidden rounded-2xl h-48">
-                    <img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=600"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        alt="Interior Painting">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                        <h4 class="text-white font-bold">Living Room Paint</h4>
-                    </div>
-                </div>
-                <div class="group relative overflow-hidden rounded-2xl h-48">
-                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        alt="Exterior Remodel">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                        <h4 class="text-white font-bold">Exterior Siding</h4>
-                    </div>
-                </div>
-                <div class="group relative overflow-hidden rounded-2xl h-48">
-                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        alt="Bathroom Remodel">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                        <h4 class="text-white font-bold">Luxury Bath</h4>
+
+                <!-- FAQ 3 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition hover:border-brand-300">
+                    <button class="faq-btn w-full px-6 py-5 text-left font-bold text-lg text-slate-900 flex justify-between items-center focus:outline-none bg-slate-50 hover:bg-slate-100 transition">
+                        <span>What areas in Washington do you service?</span>
+                        <i class="fas fa-chevron-down text-brand-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 py-5 bg-white border-t border-slate-100 text-slate-600 leading-relaxed">
+                        We serve residential and commercial clients across the greater Puget Sound region, including King County, Snohomish County, Pierce County, and surrounding areas.
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action Section -->
+    <!-- Call To Action Banner -->
     <section class="py-20 accent-gradient text-white relative overflow-hidden">
-        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-white opacity-10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-white opacity-10 rounded-full blur-3xl"></div>
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Transform Your Space?</h2>
-            <p class="text-xl mb-10 max-w-2xl mx-auto opacity-90">Contact 4 Seasons Right Services Inc today for a
-                comprehensive consultation and a free estimate on your next project.</p>
-            <a href="contact.html"
-                class="inline-block bg-white text-amber-700 font-bold px-10 py-4 rounded-lg shadow-xl hover:shadow-2xl hover:bg-slate-50 transition-all transform hover:-translate-y-1">
-                Request an Estimate Now
+        <div class="container mx-auto px-6 text-center relative z-10" data-aos="zoom-in">
+            <h2 class="text-3xl sm:text-5xl font-extrabold mb-6 leading-tight">Ready To Elevate Your Property?</h2>
+            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto font-medium">Contact our licensed experts today for a free on-site consultation and estimate.</p>
+            <a href="contact.html" class="bg-slate-900 hover:bg-slate-950 text-white px-10 py-4 rounded-xl font-extrabold text-lg inline-block shadow-2xl transition transform hover:-translate-y-1">
+                Schedule Your Free Estimate Now <i class="fas fa-arrow-right ml-2 text-brand-500"></i>
             </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 text-white pt-20 pb-10">
+    <footer class="bg-slate-950 text-white pt-20 pb-10 border-t border-slate-800">
         <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12 mb-16">
             <div class="col-span-2">
                 <div class="flex items-center gap-4 mb-6">
-                    <img src="images/logo.jpg" alt="4 Seasons Right Services Logo"
-                        class="h-16 w-auto object-contain rounded bg-white/10 p-1">
+                    <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-16 w-auto object-contain rounded bg-white/10 p-1">
                     <div class="flex flex-col">
-                        <span class="text-2xl font-bold tracking-tighter">4 SEASONS <span
-                                class="text-amber-500">RIGHT</span></span>
-                        <span class="text-xs uppercase tracking-[0.3em] text-slate-500">Services Inc.</span>
+                        <span class="text-2xl font-extrabold tracking-tighter">4 SEASONS <span class="text-brand-500">RIGHT</span></span>
+                        <span class="text-xs uppercase tracking-[0.3em] text-slate-400 font-bold">Services Inc.</span>
                     </div>
                 </div>
-                <p class="text-slate-400 max-w-sm">
-                    A Washington licensed and bonded contractor providing premium renovations for commercial and
-                    residential clients. Built on efficiency and trust.
+                <p class="text-slate-400 max-w-sm leading-relaxed">
+                    A Washington licensed and bonded contractor providing premium renovations for commercial and residential clients. Built on efficiency, craftsmanship, and trust.
                 </p>
             </div>
             <div>
-                <h5 class="font-bold mb-6">Quick Links</h5>
-                <ul class="space-y-3 text-slate-400">
-                    <li><a href="index.html" class="hover:text-amber-500">Home</a></li>
-                    <li><a href="about.html" class="hover:text-amber-500">About Us</a></li>
-                    <li><a href="services.html" class="hover:text-amber-500">Services</a></li>
-                    <li><a href="contact.html" class="hover:text-amber-500">Contact Us</a></li>
+                <h5 class="font-bold text-lg mb-6 text-white border-l-4 border-brand-500 pl-3">Quick Links</h5>
+                <ul class="space-y-3 text-slate-400 font-medium">
+                    <li><a href="index.html" class="hover:text-brand-500 transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-brand-500 transition-colors">About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brand-500 transition-colors">Services</a></li>
+                    <li><a href="contact.html" class="hover:text-brand-500 transition-colors">Contact Us</a></li>
                 </ul>
             </div>
             <div>
-                <h5 class="font-bold mb-6">Contact</h5>
-                <p class="text-slate-400 mb-2"><i class="fas fa-phone-alt mr-2 text-amber-500"></i>(425) 466-5469</p>
-                <p class="text-slate-400"><i class="fas fa-envelope mr-2 text-amber-500"></i>4srsinc@gmail.com</p>
-                <p class="text-slate-400 mt-4 italic">Lic# 4SEASSR801OR</p>
+                <h5 class="font-bold text-lg mb-6 text-white border-l-4 border-brand-500 pl-3">Contact Us</h5>
+                <p class="text-slate-400 mb-3"><a href="tel:4254665469" class="hover:text-brand-400 transition flex items-center"><i class="fas fa-phone-alt mr-3 text-brand-500"></i>(425) 466-5469</a></p>
+                <p class="text-slate-400 mb-3"><a href="mailto:4srsinc@gmail.com" class="hover:text-brand-400 transition flex items-center"><i class="fas fa-envelope mr-3 text-brand-500"></i>4srsinc@gmail.com</a></p>
+                <p class="text-slate-400 mt-4 italic text-sm">Lic# 4SEASSR801OR</p>
             </div>
         </div>
-        <div class="container mx-auto px-6 pt-10 border-t border-white/5 text-center text-slate-500 text-sm">
+        <div class="container mx-auto px-6 pt-10 border-t border-white/10 text-center text-slate-500 text-sm font-medium">
             &copy; 2026 4 Seasons Right Services Inc | Powered by Nova Tech Studio LLC.
         </div>
     </footer>
 
+    <!-- Floating Quick Call / Action Widget -->
+    <a href="tel:4254665469" class="fixed bottom-6 right-6 z-50 bg-brand-500 hover:bg-brand-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl animate-pulse-glow transition transform hover:scale-110" title="Call Now">
+        <i class="fas fa-phone-alt text-xl"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        AOS.init({ duration: 800, once: true });
+
+        // Mobile Menu Toggle
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileBtn?.addEventListener('click', () => {
             mobileMenu?.classList.toggle('hidden');
         });
+
+        // Calculator Logic
+        const calcService = document.getElementById('calc-service');
+        const calcSqft = document.getElementById('calc-sqft');
+        const calcSqftVal = document.getElementById('calc-sqft-val');
+        const calcResult = document.getElementById('calc-result');
+
+        function updateCalc() {
+            if (!calcService || !calcSqft) return;
+            const rate = parseFloat(calcService.value);
+            const sqft = parseInt(calcSqft.value);
+            calcSqftVal.innerText = sqft + ' sq ft';
+            const low = Math.round(rate * sqft * 0.85);
+            const high = Math.round(rate * sqft * 1.25);
+            calcResult.innerText = `$${low.toLocaleString()} - $${high.toLocaleString()}`;
+        }
+
+        calcService?.addEventListener('change', updateCalc);
+        calcSqft?.addEventListener('input', updateCalc);
+
+        // FAQ Accordion Logic
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
     </script>
 </body>
-
 </html>
