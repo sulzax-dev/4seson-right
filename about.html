@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | 4 Seasons Right Services Inc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .accent-gradient { background: linear-gradient(135deg, #FD431A 0%, #FD431A 100%); }
+        .hero-overlay { background: rgba(15, 23, 42, 0.7); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-slate-900 text-white py-2 px-4 text-sm hidden md:block">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex space-x-6">
+                <span><i class="fas fa-phone-alt text-amber-500 mr-2"></i>(425) 466-5469</span>
+                <span><i class="fas fa-envelope text-amber-500 mr-2"></i>4srsinc@gmail.com</span>
+            </div>
+            <div>
+                <span><i class="fas fa-clock text-amber-500 mr-2"></i>Mon - Sat: 8am – 7pm</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="glass-nav sticky top-0 z-50 border-b border-slate-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-12 w-auto object-contain rounded">
+                <div class="flex flex-col hidden sm:flex">
+                    <span class="text-xl font-bold tracking-tighter text-slate-900 leading-none">4 SEASONS <span class="text-amber-600">RIGHT</span></span>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Services Inc.</span>
+                </div>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <ul class="hidden lg:flex space-x-8 font-medium text-slate-600">
+                <li><a href="index.html" class="hover:text-amber-600 transition">Home</a></li>
+                <li><a href="about.html" class="text-amber-600 transition font-bold">About Us</a></li>
+                <li><a href="services.html" class="hover:text-amber-600 transition">Our Services</a></li>
+                <li><a href="contact.html" class="hover:text-amber-600 transition">Contact Us</a></li>
+            </ul>
+
+            <div class="hidden lg:block">
+                <a href="contact.html" class="accent-gradient text-white px-6 py-2.5 rounded-md font-semibold hover:shadow-lg transition-all inline-block transform hover:-translate-y-0.5">
+                    BOOK NOW
+                </a>
+            </div>
+
+            <!-- Mobile Burger -->
+            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-slate-900">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 p-6 absolute w-full shadow-xl">
+            <ul class="space-y-4 font-medium">
+                <li><a href="index.html" class="block py-2">Home</a></li>
+                <li><a href="about.html" class="block py-2 text-amber-600">About Us</a></li>
+                <li><a href="services.html" class="block py-2">Our Services</a></li>
+                <li><a href="contact.html" class="block py-2">Contact Us</a></li>
+                <li><a href="contact.html" class="block w-full accent-gradient text-white text-center py-3 rounded-md">BOOK ESTIMATE</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-32 bg-slate-900 flex items-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1541888086925-920a0b27b958?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover" alt="Construction team">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">About <span class="text-amber-500">Us</span></h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto">Building dreams from the ground up with ingenuity, precision, and purpose.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
+                <div>
+                    <h2 class="text-amber-600 font-bold tracking-widest uppercase text-sm mb-4">Who We Are</h2>
+                    <h3 class="text-4xl font-bold text-slate-900 mb-6">Welcome to 4 Seasons Right Services Inc</h3>
+                    <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+                        Where construction meets ingenuity, not just providing bricks and finishes. We focus on purpose, precision, and the belief that every structure should serve the people living within it.
+                    </p>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        Our goal is to ensure that your property reflects both beauty and usability, built to last and improve your lifestyle.
+                    </p>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800" class="rounded-2xl shadow-2xl relative z-10" alt="Craftsmanship">
+                    <div class="absolute -bottom-6 -right-6 w-64 h-64 accent-gradient rounded-2xl -z-0 opacity-10"></div>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center mb-24 flex-col-reverse lg:flex-row-reverse">
+                <div class="relative lg:order-2">
+                    <h2 class="text-amber-600 font-bold tracking-widest uppercase text-sm mb-4">What We Do</h2>
+                    <h3 class="text-4xl font-bold text-slate-900 mb-6">Delivering Lasting Impressions With Seamless Execution</h3>
+                    <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+                        Our contractors transform places with perfect roofing, sturdy flooring, and premium painting. We handle each task with the best craftsmanship and durable materials to deliver lasting value and an elegant look every time. 
+                    </p>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        From large scale framing to the finest interior refinements, we upgrade everyday environments to support real life and provide comfort. Our work speaks through clean lines and solid structures that stand tall through all four seasons.
+                    </p>
+                </div>
+                <div class="relative lg:order-1">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800" class="rounded-2xl shadow-2xl relative z-10" alt="Architecture">
+                    <div class="absolute -top-6 -left-6 w-64 h-64 bg-slate-200 rounded-2xl -z-0"></div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 p-12 md:p-16 rounded-3xl border border-slate-100 shadow-sm text-center max-w-4xl mx-auto">
+                <h2 class="text-amber-600 font-bold tracking-widest uppercase text-sm mb-4">Our Journey</h2>
+                <h3 class="text-4xl font-bold text-slate-900 mb-6">Legacy Through Craft</h3>
+                <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+                    With years of expertise in commercial and residential spaces, we perfectly cover every aspect of the process from start to finish, ensuring flawless details. Our remodelers redefine both interiors and exteriors to bring your dream place into reality.
+                </p>
+                <p class="text-slate-600 text-lg mb-8 leading-relaxed">
+                    We focus on sustainable solutions and install optimized layouts that improve energy efficiency and the value of your property. Our team delivers customized assistance and budget friendly rates to set new benchmarks of quality and reliability. We also provide transparent communication, clear timelines, and flexible schedules to ensure customer satisfaction in every project. Each beam, wire, and finish we fix serves a purpose of functionality and aesthetics. Staying up to date with in demand trends of building, painting, and remodeling, our professionals deliver personalized results that meet your needs.
+                </p>
+                <a href="contact.html" class="accent-gradient text-white px-10 py-4 rounded-md font-bold text-lg hover:shadow-xl transition inline-block">
+                    So, why are you waiting? Get our services now.
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-white pt-20 pb-10">
+        <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12 mb-16">
+            <div class="col-span-2">
+                <div class="flex items-center gap-4 mb-6">
+                    <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-16 w-auto object-contain rounded bg-white/10 p-1">
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-bold tracking-tighter">4 SEASONS <span class="text-amber-500">RIGHT</span></span>
+                        <span class="text-xs uppercase tracking-[0.3em] text-slate-500">Services Inc.</span>
+                    </div>
+                </div>
+                <p class="text-slate-400 max-w-sm">
+                    A Washington licensed and bonded contractor providing premium renovations for commercial and residential clients. Built on efficiency and trust.
+                </p>
+            </div>
+            <div>
+                <h5 class="font-bold mb-6">Quick Links</h5>
+                <ul class="space-y-3 text-slate-400">
+                    <li><a href="index.html" class="hover:text-amber-500">Home</a></li>
+                    <li><a href="about.html" class="hover:text-amber-500">About Us</a></li>
+                    <li><a href="services.html" class="hover:text-amber-500">Services</a></li>
+                    <li><a href="contact.html" class="hover:text-amber-500">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-bold mb-6">Contact</h5>
+                <p class="text-slate-400 mb-2"><i class="fas fa-phone-alt mr-2 text-amber-500"></i>(425) 466-5469</p>
+                <p class="text-slate-400"><i class="fas fa-envelope mr-2 text-amber-500"></i>4srsinc@gmail.com</p>
+                <p class="text-slate-400 mt-4 italic">Lic# 4SEASSR801OR</p>
+            </div>
+        </div>
+        <div class="container mx-auto px-6 pt-10 border-t border-white/5 text-center text-slate-500 text-sm">
+            &copy; 2026 4 Seasons Right Services Inc | Powered by Nova Tech Studio LLC.
+        </div>
+    </footer>
+
+    <script>
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn?.addEventListener('click', () => {
+            mobileMenu?.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
