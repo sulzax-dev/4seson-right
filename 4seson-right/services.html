@@ -10,7 +10,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services | 4 Seasons Right Services Inc</title>
+    <title>General Contractor Services & Remodeling | 4 Seasons Right Services Inc</title>
+    <meta name="description" content="Explore our complete line of general contractor solutions in Seattle, Bellevue, and Kirkland. Premium kitchen & bathroom remodeling, interior/exterior painting, roofing, decking, and siding. Call (425) 466-5469.">
+    <meta name="keywords" content="general contractor washington, remodeling services seattle, painting contractor bellevue, local builders wa, deck siding contractor">
+    <meta name="robots" content="index, follow">
+    <!-- JSON-LD Structured Data Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "HomeAndConstructionBusiness",
+          "@id": "https://4srsinc.com/#business",
+          "name": "4 Seasons Right Services Inc",
+          "image": "https://4srsinc.com/images/logo.jpg",
+          "telePhone": "(425) 466-5469",
+          "email": "4srsinc@gmail.com",
+          "url": "https://4srsinc.com/services.html",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kirkland",
+            "addressRegion": "WA",
+            "postalCode": "98034",
+            "addressCountry": "US"
+          }
+        }
+      ]
+    }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -78,40 +105,100 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Navigation -->
     <header class="glass-nav sticky top-0 z-50 border-b border-slate-200 shadow-sm">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3 group">
-                <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-16 w-auto object-contain rounded transition-transform group-hover:scale-105">
-                
-            </a>
-            
-            <!-- Desktop Menu -->
-            <ul class="hidden lg:flex space-x-8 font-semibold text-slate-600">
-                <li><a href="index.html" class="hover:text-brand-500 transition-colors py-1">Home</a></li>
-                <li><a href="about.html" class="hover:text-brand-500 transition-colors py-1">About Us</a></li>
-                <li><a href="services.html" class="text-brand-500 font-bold relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-brand-500">Our Services</a></li>
-                <li><a href="contact.html" class="hover:text-brand-500 transition-colors py-1">Contact Us</a></li>
-            </ul>
+        <nav class="container mx-auto px-6 py-4 flex flex-col items-center">
+            <!-- Desktop Layout -->
+            <div class="hidden lg:flex items-center justify-between w-full">
+                <!-- Left Nav Links -->
+                <ul class="flex items-center space-x-8 font-semibold text-slate-600 w-[42%] justify-end pr-8">
+                    <li><a href="index.html" class="hover:text-brand-500 transition-colors py-1">Home</a></li>
+                    <li><a href="about.html" class="hover:text-brand-500 transition-colors py-1">About Us</a></li>
+                    <li class="relative group">
+                        <a href="services.html" class="text-brand-500 font-bold relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-brand-500 flex items-center gap-1">
+                            Our Services <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                        </a>
+                        <!-- Dropdown Menu -->
+                        <div class="absolute left-0 top-full mt-2 w-72 bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 font-medium text-sm text-slate-700">
+                            <a href="kitchen-remodeling.html" class="block px-6 py-2 hover:bg-brand-50 hover:text-brand-500 transition border-l-4 border-transparent hover:border-brand-500">Kitchen Remodeling</a>
+                            <a href="bathroom-remodeling.html" class="block px-6 py-2 hover:bg-brand-50 hover:text-brand-500 transition border-l-4 border-transparent hover:border-brand-500">Bathroom Remodeling</a>
+                            <a href="drywall-painting.html" class="block px-6 py-2 hover:bg-brand-50 hover:text-brand-500 transition border-l-4 border-transparent hover:border-brand-500">Drywall & Painting Services</a>
+                            <a href="flooring-carpentry.html" class="block px-6 py-2 hover:bg-brand-50 hover:text-brand-500 transition border-l-4 border-transparent hover:border-brand-500">Flooring & Carpentry</a>
+                            <a href="deck-siding.html" class="block px-6 py-2 hover:bg-brand-50 hover:text-brand-500 transition border-l-4 border-transparent hover:border-brand-500">Deck & Siding Installation</a>
+                            <a href="roofing.html" class="block px-6 py-2 hover:bg-brand-50 hover:text-brand-500 transition border-l-4 border-transparent hover:border-brand-500">Roofing Services</a>
+                            <a href="pressure-washing.html" class="block px-6 py-2 hover:bg-brand-50 hover:text-brand-500 transition border-l-4 border-transparent hover:border-brand-500">Pressure Washing</a>
+                            <a href="new-construction.html" class="block px-6 py-2 hover:bg-brand-50 hover:text-brand-500 transition border-l-4 border-transparent hover:border-brand-500">New Construction</a>
+                            <a href="commercial-painting.html" class="block px-6 py-2 hover:bg-brand-50 hover:text-brand-500 transition border-l-4 border-transparent hover:border-brand-500">Commercial Painting</a>
+                            <a href="general-remodeling.html" class="block px-6 py-2 hover:bg-brand-50 hover:text-brand-500 transition border-l-4 border-transparent hover:border-brand-500">General Remodeling</a>
+                            <a href="painting-interior.html" class="block px-6 py-2 hover:bg-brand-50 hover:text-brand-500 transition border-l-4 border-transparent hover:border-brand-500">Painting Interior</a>
+                            <a href="painting-exterior.html" class="block px-6 py-2 hover:bg-brand-50 hover:text-brand-500 transition border-l-4 border-transparent hover:border-brand-500">Painting Exterior</a>
+                        </div>
+                    </li>
+                </ul>
 
-            <div class="hidden lg:block">
-                <a href="contact.html" class="accent-gradient text-white px-7 py-3 rounded-xl font-bold hover:shadow-lg hover:shadow-brand-500/30 transition-all inline-block transform hover:-translate-y-0.5 animate-pulse-glow">
-                    BOOK ESTIMATE
-                </a>
+                <!-- Centered Logo -->
+                <div class="flex justify-center w-[16%] shrink-0">
+                    <a href="index.html" class="flex items-center group">
+                        <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-20 w-20 object-cover object-left rounded transition-transform group-hover:scale-105">
+                    </a>
+                </div>
+
+                <!-- Right Nav Links + CTA -->
+                <div class="flex items-center space-x-8 font-semibold text-slate-600 w-[42%] justify-start pl-8">
+                    <ul class="flex items-center space-x-8">
+                        <li><a href="gallery.html" class="hover:text-brand-500 transition-colors py-1">Gallery</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-500 transition-colors py-1">Contact Us</a></li>
+                    </ul>
+                    <div>
+                        <a href="contact.html" class="accent-gradient text-white px-6 py-2.5 rounded-xl font-bold hover:shadow-lg hover:shadow-brand-500/30 transition-all inline-block transform hover:-translate-y-0.5 active:translate-y-0 text-sm">
+                            BOOK ESTIMATE
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <!-- Mobile Burger -->
-            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-slate-900 focus:outline-none" aria-label="Toggle Navigation">
-                <i class="fas fa-bars"></i>
-            </button>
+            <!-- Mobile Layout -->
+            <div class="flex lg:hidden items-center justify-between w-full relative">
+                <!-- Empty spacer to push logo center -->
+                <div class="w-10"></div>
+                <!-- Centered Logo -->
+                <a href="index.html" class="flex items-center group mx-auto">
+                    <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-16 w-16 object-cover object-left rounded">
+                </a>
+                <!-- Mobile Burger Button -->
+                <button id="mobile-menu-btn" class="text-2xl text-slate-900 absolute right-0 focus:outline-none" aria-label="Toggle Navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </nav>
 
         <!-- Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 p-6 absolute w-full shadow-2xl">
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 p-6 absolute w-full shadow-2xl transition-all">
             <ul class="space-y-4 font-semibold">
                 <li><a href="index.html" class="block py-2 text-slate-700 hover:text-brand-500">Home</a></li>
                 <li><a href="about.html" class="block py-2 text-slate-700 hover:text-brand-500">About Us</a></li>
-                <li><a href="services.html" class="block py-2 text-brand-500 font-bold">Our Services</a></li>
+                <li>
+                    <div class="flex justify-between items-center py-2 text-slate-700 hover:text-brand-500 cursor-pointer" onclick="document.getElementById('mobile-submenu').classList.toggle('hidden'); document.getElementById('mobile-chevron').classList.toggle('rotate-180')">
+                        <span class="text-brand-500 font-bold">Our Services</span>
+                        <i id="mobile-chevron" class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
+                    </div>
+                    <ul id="mobile-submenu" class="hidden pl-4 mt-2 space-y-2 border-l-2 border-brand-500 transition-all duration-300">
+                        <li><a href="services.html" class="block py-1 text-sm text-brand-500 font-bold">All Services</a></li>
+                        <li><a href="kitchen-remodeling.html" class="block py-1 text-sm text-slate-600 hover:text-brand-500">Kitchen Remodeling</a></li>
+                        <li><a href="bathroom-remodeling.html" class="block py-1 text-sm text-slate-600 hover:text-brand-500">Bathroom Remodeling</a></li>
+                        <li><a href="drywall-painting.html" class="block py-1 text-sm text-slate-600 hover:text-brand-500">Drywall & Painting Services</a></li>
+                        <li><a href="flooring-carpentry.html" class="block py-1 text-sm text-slate-600 hover:text-brand-500">Flooring & Carpentry</a></li>
+                        <li><a href="deck-siding.html" class="block py-1 text-sm text-slate-600 hover:text-brand-500">Deck & Siding Installation</a></li>
+                        <li><a href="roofing.html" class="block py-1 text-sm text-slate-600 hover:text-brand-500">Roofing Services</a></li>
+                        <li><a href="pressure-washing.html" class="block py-1 text-sm text-slate-600 hover:text-brand-500">Pressure Washing</a></li>
+                        <li><a href="new-construction.html" class="block py-1 text-sm text-slate-600 hover:text-brand-500">New Construction</a></li>
+                        <li><a href="commercial-painting.html" class="block py-1 text-sm text-slate-600 hover:text-brand-500">Commercial Painting</a></li>
+                        <li><a href="general-remodeling.html" class="block py-1 text-sm text-slate-600 hover:text-brand-500">General Remodeling</a></li>
+                        <li><a href="painting-interior.html" class="block py-1 text-sm text-slate-600 hover:text-brand-500">Painting Interior</a></li>
+                        <li><a href="painting-exterior.html" class="block py-1 text-sm text-slate-600 hover:text-brand-500">Painting Exterior</a></li>
+                    </ul>
+                </li>
+                <li><a href="gallery.html" class="block py-2 text-slate-700 hover:text-brand-500">Gallery</a></li>
                 <li><a href="contact.html" class="block py-2 text-slate-700 hover:text-brand-500">Contact Us</a></li>
-                <li><a href="contact.html" class="block w-full accent-gradient text-white text-center py-3.5 rounded-xl font-bold">BOOK ESTIMATE NOW</a></li>
+                <li><a href="contact.html" class="block w-full accent-gradient text-white text-center py-3.5 rounded-xl font-bold shadow-lg">BOOK ESTIMATE NOW</a></li>
             </ul>
         </div>
     </header>
@@ -119,7 +206,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Hero Section -->
     <section class="relative py-32 bg-slate-950 flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1504307651254-35680f356f12?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-40" alt="Construction services">
+            <img src="images/WhatsApp-Image-2026-03-18-at-1.52.29-AM-1-scaled.jpeg" class="w-full h-full object-cover opacity-40" alt="Construction services">
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
         <div class="container mx-auto px-6 relative z-10 text-center" data-aos="fade-up">
@@ -498,7 +585,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12 mb-16">
             <div class="col-span-2">
                 <div class="flex items-center gap-4 mb-6">
-                    <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-16 w-auto object-contain rounded bg-white/10 p-1">
+                    <img src="images/logo.jpg" alt="4 Seasons Right Services Logo" class="h-16 w-16 object-cover object-left rounded bg-white/10 p-1">
                     <div class="flex flex-col">
                         <span class="text-2xl font-extrabold tracking-tighter">4 SEASONS <span class="text-brand-500">RIGHT</span></span>
                         <span class="text-xs uppercase tracking-[0.3em] text-slate-400 font-bold">Services Inc.</span>
@@ -581,5 +668,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         }
     </script>
+    <!-- Modern Interactive Chatbot & Layout Enhancer -->
+    <script src="chatbot.js" defer></script>
 </body>
 </html>

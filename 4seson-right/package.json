@@ -1,0 +1,19 @@
+{
+  "name": "four-seasons-right-services",
+  "version": "1.0.0",
+  "description": "4 Seasons Right Services Inc | Premium Contracting WA",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "echo 'No build step required for static site'",
+    "lint": "echo 'No lint required'",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.11.0",
+    "dotenv": "^17.4.2",
+    "express": "^4.19.2",
+    "nodemailer": "^9.0.3"
+  }
+}

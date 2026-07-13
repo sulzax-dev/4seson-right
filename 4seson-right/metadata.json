@@ -1,0 +1,6 @@
+{
+  "name": "4 Seasons Right Services",
+  "description": "4 Seasons Right Services Inc. delivers high-end residential & commercial transformations across Washington. From precision framing to custom roofing and luxury interiors.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
