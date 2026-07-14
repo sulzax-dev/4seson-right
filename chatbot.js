@@ -155,12 +155,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Chat Trigger Button
     const chatBtn = document.createElement('button');
     chatBtn.id = 'chatbot-toggle-btn';
-    chatBtn.className = 'bg-slate-900 hover:bg-slate-800 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition transform hover:scale-110 active:scale-95 border-2 border-brand-500 relative group';
+    chatBtn.className = 'bg-slate-900 hover:bg-slate-800 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition transform hover:scale-110 active:scale-95 border-2 border-brand-500 relative group overflow-hidden';
     chatBtn.title = 'Chat with us to Book';
     chatBtn.innerHTML = `
-        <span class="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-slate-900 animate-ping"></span>
-        <span class="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-slate-900"></span>
-        <i class="fas fa-comments text-xl group-hover:rotate-12 transition-transform"></i>
+        <span class="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-slate-900 animate-ping z-10"></span>
+        <span class="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-slate-900 z-10"></span>
+        <img src="images/gallery/icon/icon.jpeg" alt="Chat Icon" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
     `;
     
     // Chat Window
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     chatHeader.innerHTML = `
         <div class="flex items-center gap-3">
             <div class="relative w-10 h-10 rounded-full overflow-hidden bg-white border border-white/20">
-                <img src="images/logo.jpg" alt="Support Avatar" class="w-full h-full object-cover object-left">
+                <img src="images/gallery/icon/icon.jpeg" alt="Support Avatar" class="w-full h-full object-cover">
             </div>
             <div>
                 <h4 class="font-extrabold text-sm tracking-tight">4 Seasons Booking Bot</h4>
@@ -222,9 +222,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(chatWidget);
 
     // ----------------------------------------------------
-    // SECTION 4: Conversational AI Engine (Gemini)
+    // SECTION 4: Conversational AI Engine & Client-Side Booking Flow
     // ----------------------------------------------------
     let chatHistory = [];
+    
+    // Booking Flow State
+    let bookingState = {
+        active: false,
+        step: 0,
+        data: {
+            name: '',
+            phone: '',
+            email: '',
+            service: '',
+            details: ''
+        }
+    };
 
     // Helper: Add message bubble
     function addMessage(text, sender = 'bot') {
@@ -287,28 +300,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Bot message trigger with elegant simulated typing delay
-    function botSpeak(text, delay = 1000) {
-        showTypingIndicator();
-        setTimeout(() => {
-            removeTypingIndicator();
-            addMessage(text, 'bot');
-        }, delay);
-    }
-
     // Show suggestion chips for fast conversational discovery
-    function showSuggestionChips() {
-        // Container for chips
+    function showSuggestionChips(customChips = null) {
+        // Hide existing chips first
+        const existingChips = document.getElementById('chatbot-suggestion-chips');
+        if (existingChips) {
+            existingChips.remove();
+        }
+
         const chipsContainer = document.createElement('div');
         chipsContainer.id = 'chatbot-suggestion-chips';
         chipsContainer.className = 'flex flex-wrap gap-2 mt-2 w-full pl-2 animate-fade-in';
         
-        const chips = [
-            { text: "📅 Book Free Estimate", reply: "I would like to book a free contracting estimate." },
+        const defaultChips = [
+            { text: "📅 Book Free Estimate", reply: "I would like to book a free estimate." },
             { text: "🛠️ What are your services?", reply: "What services do you offer?" },
-            { text: "📍 Area & Location", reply: "Where are you based and what areas do you serve?" },
-            { text: "📞 Contact supervisor", reply: "Can I have your phone number and working hours?" }
+            { text: "📍 Area & Location", reply: "Where are you based?" },
+            { text: "📞 Contact supervisor", reply: "What is your phone number and working hours?" }
         ];
+        
+        const chips = customChips || defaultChips;
         
         chips.forEach(chip => {
             const btn = document.createElement('button');
@@ -316,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerText = chip.text;
             btn.addEventListener('click', () => {
                 handleUserResponse(chip.reply);
-                chipsContainer.remove(); // Remove chips after selection to keep chat clean
+                chipsContainer.remove(); // Remove chips after selection
             });
             chipsContainer.appendChild(btn);
         });
@@ -325,7 +336,131 @@ document.addEventListener('DOMContentLoaded', () => {
         chatBody.scrollTop = chatBody.scrollHeight;
     }
 
-    // Primary conversational engine logic via /api/chat
+    // Handle Client-Side Booking Flow State Machine
+    async function processBookingFlow(input) {
+        const trimmedInput = input.trim();
+        
+        // State Machine
+        switch (bookingState.step) {
+            case 0:
+                bookingState.step = 1;
+                showTypingIndicator();
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    addMessage(`Let's schedule your **free contracting estimate**! 📅<br><br>First, what is your **Full Name**?`, 'bot');
+                }, 800);
+                break;
+                
+            case 1: // Name received
+                if (!trimmedInput) return;
+                bookingState.data.name = trimmedInput;
+                bookingState.step = 2;
+                showTypingIndicator();
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    addMessage(`Nice to meet you, **${bookingState.data.name}**!<br><br>What is the best **Phone Number** to reach you at?`, 'bot');
+                }, 800);
+                break;
+                
+            case 2: // Phone received
+                if (!trimmedInput) return;
+                bookingState.data.phone = trimmedInput;
+                bookingState.step = 3;
+                showTypingIndicator();
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    addMessage(`Got it: **${bookingState.data.phone}**.<br><br>Please enter your **Email Address** (or click 'No email' below if you don't wish to share it).`, 'bot');
+                    showSuggestionChips([
+                        { text: "❌ No Email", reply: "none" }
+                    ]);
+                }, 800);
+                break;
+                
+            case 3: // Email received
+                if (!trimmedInput) return;
+                bookingState.data.email = trimmedInput === 'none' ? '' : trimmedInput;
+                bookingState.step = 4;
+                showTypingIndicator();
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    addMessage(`Thanks! What type of **Service/Work** do you need?`, 'bot');
+                    showSuggestionChips([
+                        { text: "🍳 Kitchen Remodeling", reply: "Kitchen Remodeling" },
+                        { text: "🛁 Bathroom Remodeling", reply: "Bathroom Remodeling" },
+                        { text: "🎨 Drywall & Painting", reply: "Drywall & Painting" },
+                        { text: "🪵 Flooring & Carpentry", reply: "Flooring & Carpentry" },
+                        { text: "🏠 Deck & Siding", reply: "Deck & Siding" },
+                        { text: "🏠 Roofing Services", reply: "Roofing Services" }
+                    ]);
+                }, 800);
+                break;
+                
+            case 4: // Service received
+                if (!trimmedInput) return;
+                bookingState.data.service = trimmedInput;
+                bookingState.step = 5;
+                showTypingIndicator();
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    addMessage(`Almost done! Please describe the **project details** (e.g. room size, materials, timing, or special requests).`, 'bot');
+                    showSuggestionChips([
+                        { text: "📐 Just a general estimate", reply: "Just a general estimate" },
+                        { text: "📞 Call me to discuss details", reply: "Call me to discuss details" }
+                    ]);
+                }, 800);
+                break;
+                
+            case 5: // Details received -> Submit!
+                if (!trimmedInput) return;
+                bookingState.data.details = trimmedInput;
+                bookingState.step = 6;
+                showTypingIndicator();
+                
+                // Submit to backend
+                try {
+                    const response = await fetch('/api/booking', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name: bookingState.data.name,
+                            phone: bookingState.data.phone,
+                            email: bookingState.data.email,
+                            service: bookingState.data.service,
+                            details: bookingState.data.details,
+                            source: 'AI Chatbot (Client-Side)'
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    removeTypingIndicator();
+                    
+                    if (response.ok && data.success) {
+                        addMessage(`🎉 **Booking Request Submitted Successfully!**<br><br>Thank you, **${bookingState.data.name}**! Your request for **${bookingState.data.service}** has been received.<br><br>Our supervisor will contact you at **${bookingState.data.phone}** within 24 hours to schedule your on-site visit!`, 'bot');
+                    } else {
+                        throw new Error(data.message || 'Submission failed');
+                    }
+                } catch (err) {
+                    console.error('Booking Submission Error:', err);
+                    removeTypingIndicator();
+                    addMessage(`⚠️ **Note:** I noted down your details, but I couldn't connect to the automated email system.<br><br>Please call our supervisor directly at **(425) 466-5469** or email **4srsinc@gmail.com** with these details:<br><br>- **Name:** ${bookingState.data.name}<br>- **Phone:** ${bookingState.data.phone}<br>- **Email:** ${bookingState.data.email || 'None'}<br>- **Service:** ${bookingState.data.service}<br>- **Details:** ${bookingState.data.details}`, 'bot');
+                }
+                
+                // Reset State
+                bookingState = {
+                    active: false,
+                    step: 0,
+                    data: { name: '', phone: '', email: '', service: '', details: '' }
+                };
+                setTimeout(() => {
+                    showSuggestionChips();
+                }, 2000);
+                break;
+        }
+    }
+
+    // Primary conversational engine logic
     async function handleUserResponse(input) {
         const trimmedInput = input.trim();
         if (!trimmedInput) return;
@@ -342,43 +477,69 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add user message to history
         chatHistory.push({ role: 'user', text: trimmedInput });
 
-        // Show typing indicator
-        showTypingIndicator();
-
-        try {
-            const response = await fetch('/api/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ messages: chatHistory })
-            });
-
-            const data = await response.json();
-            removeTypingIndicator();
-
-            if (response.ok && data.success) {
-                // Add AI's response to history and screen
-                chatHistory.push({ role: 'assistant', text: data.text });
-                addMessage(formatMessageText(data.text), 'bot');
-            } else {
-                throw new Error(data.message || 'Chat API Error');
-            }
-        } catch (err) {
-            console.error('AI Chat Error:', err);
-            removeTypingIndicator();
-            addMessage(`⚠️ **Oops!** I ran into a minor connection glitch. Please call our supervisor line directly at **(425) 466-5469** or email us at **4srsinc@gmail.com** for immediate booking and estimate scheduling!`, 'bot');
+        // If booking flow is active, let state machine handle it
+        if (bookingState.active) {
+            await processBookingFlow(trimmedInput);
+            return;
         }
+
+        // Check if user wants to start the booking flow
+        const lowerInput = trimmedInput.toLowerCase();
+        const startBookingKeywords = ['book', 'estimate', 'quote', 'schedule', 'consultation', 'appoint', 'yes', 'contracting', 'remodel', 'painting', 'flooring', 'roofing', 'siding', 'construction', 'washing'];
+        const isBookingIntent = startBookingKeywords.some(keyword => lowerInput.includes(keyword));
+        
+        if (isBookingIntent) {
+            bookingState.active = true;
+            bookingState.step = 0;
+            await processBookingFlow('');
+            return;
+        }
+
+        // Respond to common static queries client-side
+        showTypingIndicator();
+        setTimeout(() => {
+            removeTypingIndicator();
+            
+            if (lowerInput.includes('service') || lowerInput.includes('work') || lowerInput.includes('offer')) {
+                addMessage(`We offer a wide range of premium contracting services: <br><br>- 🍳 **Kitchen Remodeling**<br>- 🚿 **Bathroom Remodeling**<br>- 🎨 **Drywall & Painting**<br>- 🪵 **Flooring & Carpentry**<br>- 🏠 **Deck, Siding & Roofing**<br>- 🏢 **Commercial Painting**<br><br>Would you like to book a **free estimate**?`, 'bot');
+                showSuggestionChips([
+                    { text: "📅 Yes, Book Estimate", reply: "I would like to book a free estimate." },
+                    { text: "📍 Area & Location", reply: "Where are you based?" }
+                ]);
+            } 
+            else if (lowerInput.includes('location') || lowerInput.includes('based') || lowerInput.includes('area') || lowerInput.includes('serve') || lowerInput.includes('kirkland')) {
+                addMessage(`We are based in **Kirkland, WA** and service the greater Puget Sound region, including:<br><br>- King County (Seattle, Bellevue, Kirkland)<br>- Snohomish County (Everett)<br>- Pierce County (Tacoma)<br><br>Would you like to book a free estimate?`, 'bot');
+                showSuggestionChips([
+                    { text: "📅 Yes, Book Estimate", reply: "I would like to book a free estimate." },
+                    { text: "📞 Contact supervisor", reply: "What is your phone number?" }
+                ]);
+            }
+            else if (lowerInput.includes('phone') || lowerInput.includes('number') || lowerInput.includes('hours') || lowerInput.includes('contact') || lowerInput.includes('email') || lowerInput.includes('time')) {
+                addMessage(`You can reach us at **(425) 466-5469** or email us at **4srsinc@gmail.com**.<br><br>Our working hours are:<br>📅 **Mon - Sat: 8am – 7pm** (Closed Sundays)<br><br>Would you like to book a free estimate?`, 'bot');
+                showSuggestionChips([
+                    { text: "📅 Yes, Book Estimate", reply: "I would like to book a free estimate." }
+                ]);
+            }
+            else {
+                addMessage(`I can help you schedule a **free contracting estimate** right now!<br><br>Would you like to start the booking process?`, 'bot');
+                showSuggestionChips();
+            }
+        }, 800);
     }
 
     // Initialize first bot message on load
     function initConversation() {
         chatBody.innerHTML = ''; // Clear prior chat
         chatHistory = [];
+        bookingState = {
+            active: false,
+            step: 0,
+            data: { name: '', phone: '', email: '', service: '', details: '' }
+        };
         showTypingIndicator();
         setTimeout(() => {
             removeTypingIndicator();
-            addMessage(`👋 **Hello!** Welcome to **4 Seasons Right Services Inc.**<br><br>I'm your AI Contracting Assistant. I can answer your questions or help you instantly book a **free contracting estimate** via SMTP!<br><br>How can I help you today?`, 'bot');
+            addMessage(`👋 **Hello!** Welcome to **4 Seasons Right Services Inc.**<br><br>I'm your AI Contracting Assistant. I can answer your questions or help you instantly book a **free contracting estimate**!<br><br>How can I help you today?`, 'bot');
             showSuggestionChips();
         }, 600);
     }
