@@ -5,43 +5,13 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------
-    // SECTION 1: Logo & Layout Enhancements (User requested text removal from logo)
+    // SECTION 1: Logo & Layout (Display full uncropped logo)
     // ----------------------------------------------------
-    function enhanceLogos() {
-        // Query all logo image instances
-        const logos = document.querySelectorAll('img[src="images/logo.jpg"], img[src*="logo.jpg"]');
-        
-        logos.forEach(img => {
-            // Apply standard cropping to hide the text and only show the graphical symbol
-            img.style.objectFit = 'cover';
-            img.style.objectPosition = 'left center';
-            img.style.borderRadius = '0.75rem'; // Rounded corners
-            
-            // If it is a desktop header logo
-            if (img.classList.contains('h-20')) {
-                img.classList.remove('w-auto', 'object-contain');
-                img.classList.add('w-20');
-                img.style.width = '5rem';
-                img.style.height = '5rem';
-            } 
-            // If it is a mobile header or footer logo
-            else if (img.classList.contains('h-16')) {
-                img.classList.remove('w-auto', 'object-contain');
-                img.classList.add('w-16');
-                img.style.width = '4rem';
-                img.style.height = '4rem';
-            } 
-            // Fallback for general logo styling
-            else {
-                img.classList.remove('w-auto', 'object-contain');
-                img.style.aspectRatio = '1 / 1';
-                img.style.width = img.style.height || '4rem';
-            }
-        });
-    }
-
-    // Run logo enhancement
-    enhanceLogos();
+    const logos = document.querySelectorAll('img[src="images/logo.jpg"], img[src*="logo.jpg"]');
+    logos.forEach(img => {
+        img.style.objectFit = 'contain';
+        img.style.objectPosition = 'center';
+    });
 
     // ----------------------------------------------------
     // SECTION 2: Active Contact / Booking Form Integration

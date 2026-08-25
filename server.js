@@ -18,6 +18,25 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static assets/images
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
+// Helper to parse SMTP settings, handling multiple comma-separated emails
+const getSMTPConfig = () => {
+  const rawUser = process.env.SMTP_USER || '4srsinc@gmail.com';
+  // Split by comma to get all recipients
+  const recipients = rawUser.split(',').map(e => e.trim()).filter(Boolean);
+  // The first email is used as the SMTP login user
+  const smtpUser = recipients[0] || '4srsinc@gmail.com';
+  // The SMTP pass
+  const smtpPass = process.env.SMTP_PASS || 'trnbsbyozoipwhgb';
+  // Clean fallback or env password spaces
+  const cleanPass = smtpPass.replace(/\s+/g, '');
+  
+  return {
+    smtpUser,
+    smtpPass: cleanPass,
+    to: recipients.join(', ') // Nodemailer sends to all
+  };
+};
+
 // API endpoint for SMTP booking requests
 app.post('/api/booking', async (req, res) => {
   const { name, email, phone, service, details, source } = req.body;
@@ -27,17 +46,18 @@ app.post('/api/booking', async (req, res) => {
   }
 
   try {
+    const smtpConfig = getSMTPConfig();
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.SMTP_USER || '4srsinc@gmail.com',
-        pass: process.env.SMTP_PASS || 'trnbsbyo zoipwhgb'
+        user: smtpConfig.smtpUser,
+        pass: smtpConfig.smtpPass
       }
     });
 
     const mailOptions = {
-      from: `"4 Seasons Booking System" <${process.env.SMTP_USER || '4srsinc@gmail.com'}>`,
-      to: '4srsinc@gmail.com',
+      from: `"4 Seasons Booking System" <${smtpConfig.smtpUser}>`,
+      to: smtpConfig.to,
       replyTo: email || undefined,
       subject: `🚨 New Booking Request (${source || 'Form'}) - ${name}`,
       html: `
@@ -191,17 +211,18 @@ app.post('/api/chat', async (req, res) => {
         const args = call.args;
         
         // Send SMTP booking notification email
+        const smtpConfig = getSMTPConfig();
         const transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
-            user: process.env.SMTP_USER || '4srsinc@gmail.com',
-            pass: process.env.SMTP_PASS || 'trnbsbyo zoipwhgb'
+            user: smtpConfig.smtpUser,
+            pass: smtpConfig.smtpPass
           }
         });
 
         const mailOptions = {
-          from: `"4 Seasons Booking System" <${process.env.SMTP_USER || '4srsinc@gmail.com'}>`,
-          to: '4srsinc@gmail.com',
+          from: `"4 Seasons Booking System" <${smtpConfig.smtpUser}>`,
+          to: smtpConfig.to,
           replyTo: args.email && args.email !== 'none' ? args.email : undefined,
           subject: `🚨 New Booking Request (AI Chatbot) - ${args.name}`,
           html: `
@@ -341,6 +362,31 @@ app.get('/painting-interior.html', (req, res) => {
 
 app.get('/painting-exterior.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'painting-exterior.html'));
+});
+
+// Blog Pages
+app.get(['/blog', '/blog.html', '/blogs', '/blogs.html'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'blog.html'));
+});
+
+app.get(['/exterior-painting-weather-protection-bellevue', '/exterior-painting-weather-protection-bellevue.html', '/blog/exterior-painting-weather-protection-bellevue'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'exterior-painting-weather-protection-bellevue.html'));
+});
+
+app.get(['/drywall-repair-guide-bellevue', '/drywall-repair-guide-bellevue.html', '/blog/drywall-repair-guide-bellevue'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'drywall-repair-guide-bellevue.html'));
+});
+
+app.get(['/kitchen-remodeling-costs-guide-bellevue', '/kitchen-remodeling-costs-guide-bellevue.html', '/blog/kitchen-remodeling-costs-guide-bellevue'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'kitchen-remodeling-costs-guide-bellevue.html'));
+});
+
+app.get(['/bathroom-remodeling-waterproofing-guide-bellevue', '/bathroom-remodeling-waterproofing-guide-bellevue.html', '/blog/bathroom-remodeling-waterproofing-guide-bellevue'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'bathroom-remodeling-waterproofing-guide-bellevue.html'));
+});
+
+app.get(['/pacific-northwest-roofing-repair-replacement-guide', '/pacific-northwest-roofing-repair-replacement-guide.html', '/blog/pacific-northwest-roofing-repair-replacement-guide'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'pacific-northwest-roofing-repair-replacement-guide.html'));
 });
 
 // For any other static files, restrict configuration/source files from being served
