@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import nodemailer from 'nodemailer';
 import 'dotenv/config';
@@ -9,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Body parsing middleware
 app.use(express.json());
@@ -294,112 +295,29 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
-// Route handlers for HTML files
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+// Serve static build from dist if available, else static root
+const distPath = path.join(__dirname, 'dist');
 
-app.get('/index.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.get('/about.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'about.html'));
-});
-
-app.get('/services.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'services.html'));
-});
-
-app.get('/contact.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'contact.html'));
-});
-
-// Service Subcategory Pages
-app.get('/kitchen-remodeling.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'kitchen-remodeling.html'));
-});
-
-app.get('/bathroom-remodeling.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'bathroom-remodeling.html'));
-});
-
-app.get('/drywall-painting.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'drywall-painting.html'));
-});
-
-app.get('/flooring-carpentry.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'flooring-carpentry.html'));
-});
-
-app.get('/deck-siding.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'deck-siding.html'));
-});
-
-app.get('/roofing.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'roofing.html'));
-});
-
-app.get('/pressure-washing.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'pressure-washing.html'));
-});
-
-app.get('/new-construction.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'new-construction.html'));
-});
-
-app.get('/commercial-painting.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'commercial-painting.html'));
-});
-
-app.get('/general-remodeling.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'general-remodeling.html'));
-});
-
-app.get('/painting-interior.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'painting-interior.html'));
-});
-
-app.get('/painting-exterior.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'painting-exterior.html'));
-});
-
-// Blog Pages
-app.get(['/blog', '/blog.html', '/blogs', '/blogs.html'], (req, res) => {
-  res.sendFile(path.join(__dirname, 'blog.html'));
-});
-
-app.get(['/exterior-painting-weather-protection-bellevue', '/exterior-painting-weather-protection-bellevue.html', '/blog/exterior-painting-weather-protection-bellevue'], (req, res) => {
-  res.sendFile(path.join(__dirname, 'exterior-painting-weather-protection-bellevue.html'));
-});
-
-app.get(['/drywall-repair-guide-bellevue', '/drywall-repair-guide-bellevue.html', '/blog/drywall-repair-guide-bellevue'], (req, res) => {
-  res.sendFile(path.join(__dirname, 'drywall-repair-guide-bellevue.html'));
-});
-
-app.get(['/kitchen-remodeling-costs-guide-bellevue', '/kitchen-remodeling-costs-guide-bellevue.html', '/blog/kitchen-remodeling-costs-guide-bellevue'], (req, res) => {
-  res.sendFile(path.join(__dirname, 'kitchen-remodeling-costs-guide-bellevue.html'));
-});
-
-app.get(['/bathroom-remodeling-waterproofing-guide-bellevue', '/bathroom-remodeling-waterproofing-guide-bellevue.html', '/blog/bathroom-remodeling-waterproofing-guide-bellevue'], (req, res) => {
-  res.sendFile(path.join(__dirname, 'bathroom-remodeling-waterproofing-guide-bellevue.html'));
-});
-
-app.get(['/pacific-northwest-roofing-repair-replacement-guide', '/pacific-northwest-roofing-repair-replacement-guide.html', '/blog/pacific-northwest-roofing-repair-replacement-guide'], (req, res) => {
-  res.sendFile(path.join(__dirname, 'pacific-northwest-roofing-repair-replacement-guide.html'));
-});
-
-// For any other static files, restrict configuration/source files from being served
-app.use((req, res, next) => {
-  if (req.path.match(/\.(json|js|env|example|sh|md|gitignore)$/)) {
-    return res.status(403).send('Forbidden');
-  }
-  next();
-});
-
-// Fallback to static folder serving
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+}
 app.use(express.static(__dirname));
+
+// SPA Catch-all fallback for React Router
+app.get('*', (req, res) => {
+  if (req.path.startsWith('/api')) {
+    return res.status(404).json({ error: 'Endpoint not found' });
+  }
+
+  const distIndex = path.join(__dirname, 'dist', 'index.html');
+  if (fs.existsSync(distIndex)) {
+    return res.sendFile(distIndex);
+  }
+  
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
+

@@ -1,0 +1,207 @@
+{
+  "brand": "4 Seasons Right Services Inc",
+  "primaryLocation": "Bellevue, WA",
+  "phone": "(425) 466-5469",
+  "license": "WA Lic# 4SEASSR801OR",
+  "services": [
+    {
+      "id": "kitchen-remodeling",
+      "slug": "kitchen-remodeling",
+      "serviceName": "Kitchen & Bath Remodeling",
+      "focusKeyword": "Kitchen Remodeling Bellevue WA",
+      "top5Keywords": [
+        "Kitchen Remodel Bellevue WA",
+        "Bathroom Remodeling Bellevue",
+        "Custom Kitchen Cabinets Bellevue WA",
+        "Quartz Countertops Bellevue",
+        "Kitchen Renovation Contractor Bellevue"
+      ],
+      "metaTitle": "Kitchen Remodeling Bellevue WA | 4 Seasons Right Services",
+      "metaDescription": "Top-rated kitchen remodeling in Bellevue, WA. Custom cabinets, quartz islands, & luxury baths. Licensed WA #4SEASSR801OR. Call (425) 466-5469 for free estimate!",
+      "targetWordCount": 1150,
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "HomeAndConstructionBusiness",
+        "name": "4 Seasons Right Services Inc - Kitchen Remodeling",
+        "url": "https://4seasonsrightservices.com/services/kitchen-remodeling",
+        "telephone": "+14254665469",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bellevue",
+          "addressRegion": "WA",
+          "postalCode": "98004",
+          "addressCountry": "US"
+        },
+        "priceRange": "$$$",
+        "areaServed": ["Bellevue, WA", "Kirkland, WA", "Redmond, WA", "Seattle, WA"]
+      }
+    },
+    {
+      "id": "water-damage-restoration",
+      "slug": "water-damage-restoration",
+      "serviceName": "Water Damage Restoration",
+      "focusKeyword": "Water Damage Restoration Bellevue WA",
+      "top5Keywords": [
+        "Water Damage Repair Bellevue",
+        "Emergency Water Extraction Bellevue WA",
+        "Flood Damage Restoration Bellevue",
+        "Structural Drying Contractor Bellevue",
+        "Mold Remediation Bellevue WA"
+      ],
+      "metaTitle": "Water Damage Restoration Bellevue WA | 4 Seasons Right",
+      "metaDescription": "24/7 water damage restoration in Bellevue, WA. Rapid extraction, thermal drying, & mold prevention. Licensed WA #4SEASSR801OR. Call (425) 466-5469 for emergency help!",
+      "targetWordCount": 1100,
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "EmergencyService",
+        "name": "4 Seasons Right Services Inc - Water Damage Restoration",
+        "url": "https://4seasonsrightservices.com/services/water-damage-restoration",
+        "telephone": "+14254665469"
+      }
+    },
+    {
+      "id": "drywall-painting",
+      "slug": "drywall-painting",
+      "serviceName": "Drywall Repair & Finishing",
+      "focusKeyword": "Drywall Repair Bellevue WA",
+      "top5Keywords": [
+        "Drywall Contractor Bellevue WA",
+        "Level 5 Drywall Finishing Bellevue",
+        "Ceiling Water Damage Repair Bellevue",
+        "Popcorn Ceiling Removal Bellevue",
+        "Sheetrock Repair Bellevue WA"
+      ],
+      "metaTitle": "Drywall Repair Bellevue WA | 4 Seasons Right Services",
+      "metaDescription": "Flawless drywall repair & Level 5 smooth finishes in Bellevue, WA. Seamless patch blending & texture match. Licensed WA #4SEASSR801OR. Call (425) 466-5469 today!",
+      "targetWordCount": 1050
+    },
+    {
+      "id": "painting-interior-exterior",
+      "slug": "painting-interior",
+      "serviceName": "Interior & Exterior Painting",
+      "focusKeyword": "Painting Contractor Bellevue WA",
+      "top5Keywords": [
+        "Interior Painters Bellevue WA",
+        "Exterior House Painting Bellevue",
+        "Cabinet Painting Bellevue WA",
+        "Residential Painters Bellevue",
+        "Sherwin Williams Painting Contractor Bellevue"
+      ],
+      "metaTitle": "Painters Bellevue WA | 4 Seasons Right Services Inc",
+      "metaDescription": "Premier interior & exterior painting in Bellevue, WA. Weatherproof coatings, cabinet finishes & clean lines. Licensed WA #4SEASSR801OR. Call (425) 466-5469 now!",
+      "targetWordCount": 1100
+    },
+    {
+      "id": "flooring-carpentry",
+      "slug": "flooring-carpentry",
+      "serviceName": "Flooring & Custom Carpentry",
+      "focusKeyword": "Flooring Contractor Bellevue WA",
+      "top5Keywords": [
+        "Hardwood Floor Installation Bellevue",
+        "Luxury Vinyl Plank Bellevue WA",
+        "Custom Finish Carpentry Bellevue",
+        "Crown Moulding Installation Bellevue",
+        "Hardwood Refinishing Bellevue WA"
+      ],
+      "metaTitle": "Flooring & Carpentry Bellevue WA | 4 Seasons Right",
+      "metaDescription": "Hardwood installation, waterproof LVP & finish carpentry in Bellevue, WA. Precision subfloor prep & custom trim. Licensed WA #4SEASSR801OR. Call (425) 466-5469!",
+      "targetWordCount": 1050
+    },
+    {
+      "id": "home-renovation",
+      "slug": "general-remodeling",
+      "serviceName": "Full Home Renovation",
+      "focusKeyword": "Home Renovation Bellevue WA",
+      "top5Keywords": [
+        "General Contractor Bellevue WA",
+        "Whole House Remodel Bellevue",
+        "Basement Finishing Bellevue WA",
+        "Home Additions Contractor Bellevue",
+        "Residential General Contractor Bellevue WA"
+      ],
+      "metaTitle": "Home Renovation Bellevue WA | 4 Seasons Right Services",
+      "metaDescription": "Turnkey whole-home renovations in Bellevue, WA. Structural wall removals, basement remodels & additions. Licensed WA #4SEASSR801OR. Call (425) 466-5469 for estimate!",
+      "targetWordCount": 1200
+    },
+    {
+      "id": "deck-siding",
+      "slug": "deck-siding",
+      "serviceName": "Deck & Siding Installation",
+      "focusKeyword": "Deck & Siding Contractor Bellevue WA",
+      "top5Keywords": [
+        "James Hardie Siding Bellevue WA",
+        "Composite Deck Builder Bellevue",
+        "Trex Decking Contractor Bellevue",
+        "Siding Replacement Bellevue WA",
+        "Cedar Siding Repair Bellevue"
+      ],
+      "metaTitle": "Deck & Siding Bellevue WA | 4 Seasons Right Services",
+      "metaDescription": "James Hardie siding & Trex composite deck installation in Bellevue, WA. Weatherproof moisture barriers & railings. Licensed WA #4SEASSR801OR. Call (425) 466-5469!",
+      "targetWordCount": 1050
+    },
+    {
+      "id": "roofing",
+      "slug": "roofing",
+      "serviceName": "Roofing Services & Repairs",
+      "focusKeyword": "Roofing Contractor Bellevue WA",
+      "top5Keywords": [
+        "Roof Replacement Bellevue WA",
+        "Roof Repair Bellevue",
+        "Asphalt Shingle Roofing Bellevue",
+        "Emergency Roof Leak Repair Bellevue",
+        "GAF Roofing Contractor Bellevue WA"
+      ],
+      "metaTitle": "Roofing Contractor Bellevue WA | 4 Seasons Right Inc",
+      "metaDescription": "Architectural shingle roof replacements & leak repairs in Bellevue, WA. 50-year warranty & moss prevention. Licensed WA #4SEASSR801OR. Call (425) 466-5469 for quote!",
+      "targetWordCount": 1080
+    },
+    {
+      "id": "new-construction",
+      "slug": "new-construction",
+      "serviceName": "New Construction & Additions",
+      "focusKeyword": "New Home Construction Bellevue WA",
+      "top5Keywords": [
+        "Custom Home Builder Bellevue",
+        "DADU Builder Bellevue WA",
+        "Home Additions Contractor Bellevue",
+        "Second Story Addition Bellevue",
+        "Residential Framing Contractor Bellevue WA"
+      ],
+      "metaTitle": "New Construction Bellevue WA | 4 Seasons Right Services",
+      "metaDescription": "Custom home construction, DADU builds, & home additions in Bellevue, WA. Architectural planning & permits. Licensed WA #4SEASSR801OR. Call (425) 466-5469 today!",
+      "targetWordCount": 1050
+    },
+    {
+      "id": "commercial-painting",
+      "slug": "commercial-painting",
+      "serviceName": "Commercial Painting & Finishing",
+      "focusKeyword": "Commercial Painting Bellevue WA",
+      "top5Keywords": [
+        "Commercial Painters Bellevue WA",
+        "Office Painting Contractor Bellevue",
+        "HOA Painting Bellevue",
+        "Epoxy Floor Coatings Bellevue WA",
+        "Retail Storefront Painting Bellevue"
+      ],
+      "metaTitle": "Commercial Painting Bellevue WA | 4 Seasons Right",
+      "metaDescription": "Commercial interior & exterior painting in Bellevue, WA. Low-VOC coatings, flexible night scheduling & epoxy. Licensed WA #4SEASSR801OR. Call (425) 466-5469!",
+      "targetWordCount": 1020
+    },
+    {
+      "id": "pressure-washing",
+      "slug": "pressure-washing",
+      "serviceName": "Pressure Washing & Exterior Care",
+      "focusKeyword": "Pressure Washing Bellevue WA",
+      "top5Keywords": [
+        "Power Washing Bellevue WA",
+        "Soft Wash Roof & Siding Bellevue",
+        "Driveway Pressure Washing Bellevue",
+        "Deck Power Washing Bellevue WA",
+        "Commercial Pressure Washing Bellevue"
+      ],
+      "metaTitle": "Pressure Washing Bellevue WA | 4 Seasons Right Services",
+      "metaDescription": "Eco-friendly driveway, siding & roof pressure washing in Bellevue, WA. Deep moss & algae removal. Licensed WA #4SEASSR801OR. Call (425) 466-5469 for free estimate!",
+      "targetWordCount": 1000
+    }
+  ]
+}
