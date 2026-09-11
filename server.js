@@ -21,13 +21,13 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Helper to parse SMTP settings, handling multiple comma-separated emails
 const getSMTPConfig = () => {
-  const rawUser = process.env.SMTP_USER || '4srsinc@gmail.com';
+  const rawUser = process.env.SMTP_USER || 'zeroxmax68@gmail.com, 4srsinc@gmail.com, citation.gbpaccess@gmail.com';
   // Split by comma to get all recipients
   const recipients = rawUser.split(',').map(e => e.trim()).filter(Boolean);
   // The first email is used as the SMTP login user
-  const smtpUser = recipients[0] || '4srsinc@gmail.com';
+  const smtpUser = recipients[0] || 'zeroxmax68@gmail.com';
   // The SMTP pass
-  const smtpPass = process.env.SMTP_PASS || 'trnbsbyozoipwhgb';
+  const smtpPass = process.env.SMTP_PASS || 'pvscexnjqfpxhiqf';
   // Clean fallback or env password spaces
   const cleanPass = smtpPass.replace(/\s+/g, '');
   

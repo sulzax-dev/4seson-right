@@ -97,7 +97,7 @@ export default function EstimateForm({ defaultService = '', source = 'Website Fo
             value={formData.name}
             onChange={handleChange}
             placeholder="John Doe"
-            className="w-full px-4 py-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition"
+            className="w-full px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 font-medium bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 focus:bg-white transition"
           />
         </div>
 
@@ -112,7 +112,7 @@ export default function EstimateForm({ defaultService = '', source = 'Website Fo
             value={formData.phone}
             onChange={handleChange}
             placeholder="(425) 000-0000"
-            className="w-full px-4 py-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition"
+            className="w-full px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 font-medium bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 focus:bg-white transition"
           />
         </div>
       </div>
@@ -128,7 +128,7 @@ export default function EstimateForm({ defaultService = '', source = 'Website Fo
             value={formData.email}
             onChange={handleChange}
             placeholder="john@example.com"
-            className="w-full px-4 py-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition"
+            className="w-full px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 font-medium bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 focus:bg-white transition"
           />
         </div>
 
@@ -140,10 +140,10 @@ export default function EstimateForm({ defaultService = '', source = 'Website Fo
             name="service"
             value={formData.service}
             onChange={handleChange}
-            className="w-full px-4 py-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition"
+            className="w-full px-4 py-3 text-sm text-slate-900 font-medium bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 focus:bg-white transition cursor-pointer"
           >
             {servicesData.map((s) => (
-              <option key={s.id} value={s.title}>
+              <option key={s.id} value={s.title} className="text-slate-900 bg-white">
                 {s.title}
               </option>
             ))}
@@ -161,7 +161,7 @@ export default function EstimateForm({ defaultService = '', source = 'Website Fo
           value={formData.details}
           onChange={handleChange}
           placeholder="Describe your project, timeline, location, or any specific requests..."
-          className="w-full px-4 py-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition resize-none"
+          className="w-full px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 font-medium bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 focus:bg-white transition resize-none"
         ></textarea>
       </div>
 
